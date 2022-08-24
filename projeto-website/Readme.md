@@ -4,24 +4,27 @@
 
 Video 01 - 55 min - https://www.youtube.com/watch?v=JJiyguTeBzU
 
-## API 
+## API
 * Explicacao sobre API Rest e Restfull
     * https://www.youtube.com/watch?v=ghTrp1x_1As
 * Respostas das APIS
     * https://github.com/Gelvazio/projetos-senac/blob/main/6%20-%20APIS/respostas.md
 * Aplicativo para usar API
     * Insomnia
-        * 
+        *
 
 ## APIS publicas
 * Video com varias ideias de apis publicas
    * https://www.youtube.com/watch?v=cL0KI9EwOEk
-   
+
 * CEP Promise - Retorna os dados de um cep
     * https://github.com/BrasilAPI/cep-promise
 
 * GOV BR
+    * https://api.portaldatransparencia.gov.br/api-de-dados/auxilio-emergencial-beneficiario-por-municipio
 
+* API NASA
+    * https://api.nasa.gov/
 
 * api da marvel em nodejs
     * https://github.com/angelozero/node-marvel-api
@@ -34,7 +37,7 @@ Video 01 - 55 min - https://www.youtube.com/watch?v=JJiyguTeBzU
 
 * RapidAPI - Tem varias outras apis gratuitas
   * https://rapidapi.com/
-  
+
 * API MARVEL => filmes da marvel com detalhes
   * https://developer.marvel.com/
 
@@ -61,7 +64,7 @@ Video 01 - 55 min - https://www.youtube.com/watch?v=JJiyguTeBzU
     * https://www.youtube.com/watch?v=gmY-AUbdTUo&t=194s
 
 ## Canais sobre Desenvolvimento JAVA
-* Micheli Brito 
+* Micheli Brito
     * https://www.youtube.com/c/MichelliBrito
 
 * JAVA BASICO
@@ -69,10 +72,10 @@ Video 01 - 55 min - https://www.youtube.com/watch?v=JJiyguTeBzU
 
 * JAVA BASICO PARA INICIANTES
     * https://www.youtube.com/watch?v=-ScDZBiqzS0&list=PLXjt2Adje6u7oDoeoMONpXc_4T65WiJVN
-  
+
 ## Canais sobre Desenvolvimento - Geral
 * Descompila
-    * https://www.youtube.com/c/Descompila/playlists  
+    * https://www.youtube.com/c/Descompila/playlists
 
 
 ## Maratona Discover - Projeto Dev Finance
