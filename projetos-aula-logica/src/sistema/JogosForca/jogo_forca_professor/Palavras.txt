@@ -1,4 +1,4 @@
-﻿Notebook#PC pra levar junto
+﻿notebook#PC pra levar junto
 Windows#Tela azul
 Casa#Moradia
 mesa#usado para por coisas em cima
@@ -6,3 +6,4 @@ Ventilador#Faz vento
 Guarda-Roupa#Local para guardar roupas
 Cama#Local para dormir
 teste#testeeeeeee
+objeto#objetos

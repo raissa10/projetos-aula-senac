@@ -1,6 +1,7 @@
 package Forca;
 
 import java.awt.Font;
+import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -9,16 +10,19 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
-public class principal extends javax.swing.JFrame {
+public class principal1 extends javax.swing.JFrame {
 
     //criacao de variáveis e definição das imagens e cria os vetores
     String PalavraSorteada = new String();
     ArrayList Tentativas = new ArrayList();
     String Campo_Tentar;
+
     int MaxTentativas = 6;
     int NumTentativas = 0;
     int conta_palavras_usadas = 0;
+
     boolean FimDoJogo = true;
+
     ImageIcon icon0 = new ImageIcon("forca00.jpg");
     ImageIcon icon1 = new ImageIcon("imgforca/forca11.jpg");
     ImageIcon icon2 = new ImageIcon("forca22.jpg");
@@ -26,6 +30,7 @@ public class principal extends javax.swing.JFrame {
     ImageIcon icon4 = new ImageIcon("forca44.jpg");
     ImageIcon icon5 = new ImageIcon("forca55.jpg");
     ImageIcon icon6 = new ImageIcon("forca66.jpg");
+
     //Pontos
     int Melhor, ponto;
     static String palavras_cadastradas[] = new String[1000];
@@ -38,22 +43,22 @@ public class principal extends javax.swing.JFrame {
     static int i, posicao, posicao_palavra, opcao, tamanho_vetor;
 
     //Método que inicia as funcoes de criação das imagens
-//    @Override
-//    public Image createImage(int width, int height) {
-//        return super.createImage(width, height);
-//    }
+    @Override
+    public Image createImage(int width, int height) {
+        return super.createImage(width, height);
+    }
+
     //Método que Inicia o Formulário
-    public principal() {
+    public principal1() {
         initComponents();
         setLocationRelativeTo(null);
+
         //Desabilita Botoes da Tela
         desabilitabotoes();
     }
 
     //Método que desabilita os botões da tela até ser iniciado o jogo
     public void desabilitabotoes() {
-        limpaEnforcado();
-
         botao_A.setEnabled(false);
         botao_B.setEnabled(false);
         botao_C.setEnabled(false);
@@ -138,8 +143,10 @@ public class principal extends javax.swing.JFrame {
                 //lê a linha contendo a palavra e a dica,
                 //sabendo q as mesmas sao separadas pelo #
                 String colunas[] = linha.split("#");
+
                 //Carrega as palavras do txt para um array
                 palavras_cadastradas[i] = colunas[0];
+
                 //Carrega as dicas das palavras do txt para um array
                 dicas_cadastradas[i] = colunas[1];
                 i++;
@@ -161,7 +168,9 @@ public class principal extends javax.swing.JFrame {
     public void mudaPalavra() {
         // Limpa a palavra atual
         PalavraForca.setText("");
+
         habilitabotoes();
+
         for (i = 1; i <= tamanho_vetor; i++) {
             if ((palavras_cadastradas[i]) != (palavras_ja_usadas[i])) {
                 PalavraSorteada = palavras_cadastradas[i];
@@ -169,11 +178,14 @@ public class principal extends javax.swing.JFrame {
                 palavras_ja_usadas[i] = palavras_cadastradas[i];
                 PalavraSorteada = PalavraSorteada.toUpperCase();
                 conta_palavras_usadas++;
+
                 desenharpalavra(false);
+
                 break;
             }
         }
-        TxtDica.setFont(new Font("Comic Sans", Font.BOLD, 35));
+
+        TxtDica.setFont (new Font ("Comic Sans", Font.BOLD,35));
         TxtDica.setText("DICA: " + dica);
     }
 
@@ -182,19 +194,24 @@ public class principal extends javax.swing.JFrame {
         String tempTexto = new String();
         tempTexto = "";
         boolean faltauma = false;
+
         for (int n = 1; n <= PalavraSorteada.length(); n++) {
             //pega o tamanho da palavra e cria os tracinhos
             if ((Mostra_APalavra) || (Tentativas.contains(PalavraSorteada.substring(n - 1, n)))) {
                 tempTexto = tempTexto + PalavraSorteada.substring(n - 1, n);
             } else {
-                if (n >= 1) {
+                if(n >= 1){
                     tempTexto = tempTexto + "_";
                 }
+
                 faltauma = true;
             }
+
             tempTexto = tempTexto + " ";
         }
+
         PalavraForca.setText(tempTexto);
+
         if (!faltauma) {
             FimDoJogo = true;
             if ((NumTentativas) < 6) {//verifica se o numero de tentativas é menor que 6; se for, o usuario ganhou
@@ -220,6 +237,7 @@ public class principal extends javax.swing.JFrame {
                 String aux2;
                 aux2 = "" + ponto;
                 LbPonto.setText(aux2);
+
                 if (ponto > Melhor) {
                     Melhor = ponto;
                     String aux;
@@ -229,86 +247,48 @@ public class principal extends javax.swing.JFrame {
                 //Seta o boolean do desenho da palavra pra nao mostrar a palavra.
                 desenharpalavra(false);
             } else {
-                atualizaEnforcado();
-            }
-        }
-    }
+                NumTentativas = NumTentativas + 1;//vai adicionando o numero de tentativas; se errar, adiciona o desenho
+                switch (NumTentativas) {
+                    case (1): {
+                        labelImagemForca.setIcon(icon1);
+                        break;
+                    }
+                    case (2): {
+                        labelImagemForca.setIcon(icon2);
+                        break;
+                    }
+                    case (3): {
+                        labelImagemForca.setIcon(icon3);
+                        break;
+                    }
+                    case (4): {
+                        labelImagemForca.setIcon(icon4);
+                        break;
+                    }
+                    case (5): {
+                        labelImagemForca.setIcon(icon5);
+                        break;
+                    }
+                    case (6): {
+                        labelImagemForca.setIcon(icon6);
+                        FimDoJogo = true;
+                        //Mostra a Palavra no fim do jogo
+                        desenharpalavra(true);
 
-    protected void limpaEnforcado() {
-        // limpa inicialmente
-        labelForcaCabeca.setText("");
-        labelForcaBracoDireito.setText("");
-        labelForcaBracoEsquerdo.setText("");
-        labelForcaCorpo.setText("");
-        labelForcaPernaDireita.setText("");
-        labelForcaPernaEsquerda.setText("");
-    }
+                        FimDoJogo = true;
+                        jogo_novo.pack();
+                        jogo_novo.setLocationRelativeTo(null);
+                        jogo_novo.setVisible(true);
 
-    protected void atualizaEnforcado() {
-        limpaEnforcado();
-        //vai adicionando o numero de tentativas; se errar, adiciona o desenho
-        NumTentativas = NumTentativas + 1;
-        switch (NumTentativas) {
-            case (1): {
-                labelForcaCabeca.setText("O");
-                // labelImagemForca.setIcon(icon1);
-                break;
-            }
-            case (2): {
+                        //Zera os Pontos do Label Ponto
+                        LbPonto.setText("");
+                        ponto = 0;
 
-                labelForcaCabeca.setText("O");
-                labelForcaBracoDireito.setText("/");
-                // labelImagemForca.setIcon(icon2);
-                break;
-            }
-            case (3): {
-                labelForcaCabeca.setText("O");
-                labelForcaBracoDireito.setText("/");
-                labelForcaBracoEsquerdo.setText("\\");
-
-                // labelImagemForca.setIcon(icon3);
-                break;
-            }
-            case (4): {
-                labelForcaCabeca.setText("O");
-                labelForcaBracoDireito.setText("/");
-                labelForcaBracoEsquerdo.setText("\\");
-                labelForcaCorpo.setText("|");
-                // labelImagemForca.setIcon(icon4);
-                break;
-            }
-            case (5): {
-                labelForcaCabeca.setText("O");
-                labelForcaBracoDireito.setText("/");
-                labelForcaBracoEsquerdo.setText("\\");
-                labelForcaCorpo.setText("|");
-                labelForcaPernaDireita.setText("/");
-
-                // labelImagemForca.setIcon(icon5);
-                break;
-            }
-            case (6): {
-                labelForcaCabeca.setText("O");
-                labelForcaBracoDireito.setText("/");
-                labelForcaBracoEsquerdo.setText("\\");
-                labelForcaCorpo.setText("|");
-                labelForcaPernaDireita.setText("/");
-                labelForcaPernaEsquerda.setText("\\");
-
-                // labelImagemForca.setIcon(icon6);
-                FimDoJogo = true;
-                //Mostra a Palavra no fim do jogo
-                desenharpalavra(true);
-                FimDoJogo = true;
-                jogo_novo.pack();
-                jogo_novo.setLocationRelativeTo(null);
-                jogo_novo.setVisible(true);
-                //Zera os Pontos do Label Ponto
-                LbPonto.setText("");
-                ponto = 0;
-                //Zera as tentativas para novo jogo
-                NumTentativas = 0;
-                break;
+                        //Zera as tentativas para novo jogo
+                        NumTentativas = 0;
+                        break;
+                    }
+                }
             }
         }
     }
@@ -320,6 +300,7 @@ public class principal extends javax.swing.JFrame {
         PalavraForca.enable(true);
         PalavraForca.setText("");//limpa os campos
         Tentativas.clear();//limpa as tentativas
+
         //Limpa os Vetores
         for (i = 1; i <= tamanho_vetor; i++) {
             palavras_cadastradas[i] = "";
@@ -331,22 +312,28 @@ public class principal extends javax.swing.JFrame {
             tamanho_vetor = 0;
             dica = "";
         }
+
         //Carrega as palavras do TXT para Os Vetores
         Carregar_Vetores();
+
         // Mudar_Palavra();//Carrega os tracos com a Dica
         Verifica_Posicao_Vetor();//Verifica as posicoes do Vetor
+
         FimDoJogo = false; //Como ainda não é o fim do jogo, a opção se torna falsa
+
         //  NAO ESTA FUNCIONANDO...-VERIFICAR
         // LabelImagem.setIcon(icon0); //seta o ícone normal, do desenho da forca
+
         NumTentativas = 0; // zera o numero de tentativas
+
         desenharpalavra(false);
     }
-
     //Método que chama o Método  reiniciar_jogo()
     public void fim_do_Jogo() {
         //Aqui faz a verificação de quando é o fim do jogo
         //Ou seja , Verifica se todas as palavras ja foram usadas
         //E pergunta ao usuario se deseja jogar tudo de novo
+
         if (conta_palavras_usadas == tamanho_vetor) {
             int resposta = JOptionPane.showConfirmDialog(null, "Deseja jogar tudo de novo?");
             if (resposta == JOptionPane.YES_OPTION) {
@@ -355,6 +342,7 @@ public class principal extends javax.swing.JFrame {
                 System.exit(0);
             }
         }
+
     }
 
     //Abaixo códigos gerados pelo Java automático
@@ -377,24 +365,9 @@ public class principal extends javax.swing.JFrame {
         btsim = new javax.swing.JButton();
         btnao = new javax.swing.JButton();
         PalavraForca = new javax.swing.JTextField();
+        labelImagemForca = new javax.swing.JLabel();
         TxtDica = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        Novo_Jogo = new javax.swing.JButton();
-        Botao_Sair = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        LbMelhor = new javax.swing.JTextField();
-        LbPonto = new javax.swing.JTextField();
-        Cadastrar = new javax.swing.JButton();
-        Botao_Mudar_Palavra = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        labelForcaBracoDireito = new javax.swing.JLabel();
-        labelForcaCabeca = new javax.swing.JLabel();
-        labelForcaPernaDireita = new javax.swing.JLabel();
-        labelForcaBracoEsquerdo = new javax.swing.JLabel();
-        labelForcaPernaEsquerda = new javax.swing.JLabel();
-        labelForcaCorpo = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
         botao_Z = new javax.swing.JButton();
         botao_Y = new javax.swing.JButton();
         botao_A = new javax.swing.JButton();
@@ -421,6 +394,15 @@ public class principal extends javax.swing.JFrame {
         botao_X = new javax.swing.JButton();
         botao_Q = new javax.swing.JButton();
         botao_H = new javax.swing.JButton();
+        Novo_Jogo = new javax.swing.JButton();
+        Botao_Sair = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        LbMelhor = new javax.swing.JTextField();
+        LbPonto = new javax.swing.JTextField();
+        Cadastrar = new javax.swing.JButton();
+        Botao_Mudar_Palavra = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
 
         jLabel1.setFont(new java.awt.Font("Comic Sans MS", 1, 14)); // NOI18N
@@ -570,15 +552,253 @@ public class principal extends javax.swing.JFrame {
         PalavraForca.setEditable(false);
         PalavraForca.setFont(new java.awt.Font("Arial Black", 0, 36)); // NOI18N
         PalavraForca.setEnabled(false);
-        getContentPane().add(PalavraForca, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 780, -1));
+        getContentPane().add(PalavraForca, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 437, 780, -1));
+
+        labelImagemForca.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelImagemForca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/forca/forca00.jpg"))); // NOI18N
+        getContentPane().add(labelImagemForca, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 95, -1, 265));
 
         TxtDica.setEditable(false);
         TxtDica.setFont(new java.awt.Font("Verdana", 0, 10)); // NOI18N
         TxtDica.setEnabled(false);
-        getContentPane().add(TxtDica, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 780, 65));
+        getContentPane().add(TxtDica, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 366, 780, 65));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FORCA/jogodaforca.gif"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, -1, 83));
+
+        botao_Z.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/Z.GIF"))); // NOI18N
+        botao_Z.setAlignmentX(0.5F);
+        botao_Z.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_ZMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_Z, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 573, 50, 50));
+
+        botao_Y.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/Y.GIF"))); // NOI18N
+        botao_Y.setAlignmentX(0.5F);
+        botao_Y.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_YMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_Y, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 573, 50, 50));
+
+        botao_A.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/A.GIF"))); // NOI18N
+        botao_A.setAlignmentX(0.5F);
+        botao_A.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_AMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_A, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 513, 50, 50));
+
+        botao_V.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/V.GIF"))); // NOI18N
+        botao_V.setAlignmentX(0.5F);
+        botao_V.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_VMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_V, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 573, 50, 50));
+
+        botao_W.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/W.GIF"))); // NOI18N
+        botao_W.setAlignmentX(0.5F);
+        botao_W.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_WMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_W, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 573, 50, 50));
+
+        botao_M.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/M.GIF"))); // NOI18N
+        botao_M.setAlignmentX(0.5F);
+        botao_M.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_MMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_M, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 513, 50, 50));
+
+        botao_L.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/L.GIF"))); // NOI18N
+        botao_L.setAlignmentX(0.5F);
+        botao_L.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_LMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_L, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 513, 47, 50));
+
+        botao_C.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/C.GIF"))); // NOI18N
+        botao_C.setAlignmentX(0.5F);
+        botao_C.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_CMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_C, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 513, 50, 50));
+
+        botao_B.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/B.GIF"))); // NOI18N
+        botao_B.setAlignmentX(0.5F);
+        botao_B.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_BMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_B, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 513, 50, 50));
+
+        botao_O.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/O.GIF"))); // NOI18N
+        botao_O.setAlignmentX(0.5F);
+        botao_O.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_OMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_O, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 573, 51, 50));
+
+        botao_D.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/D.GIF"))); // NOI18N
+        botao_D.setAlignmentX(0.5F);
+        botao_D.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_DMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_D, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 513, 50, 50));
+
+        botao_K.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/K.GIF"))); // NOI18N
+        botao_K.setAlignmentX(0.5F);
+        botao_K.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_KMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_K, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 513, 52, 50));
+
+        botao_T.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/T.GIF"))); // NOI18N
+        botao_T.setAlignmentX(0.5F);
+        botao_T.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_TMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_T, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 573, 50, 50));
+
+        botao_I.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/I.GIF"))); // NOI18N
+        botao_I.setAlignmentX(0.5F);
+        botao_I.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_IMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_I, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 513, 50, 50));
+
+        botao_R.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/R.GIF"))); // NOI18N
+        botao_R.setAlignmentX(0.5F);
+        botao_R.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_RMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_R, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 573, 53, 50));
+
+        botao_U.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/U.GIF"))); // NOI18N
+        botao_U.setAlignmentX(0.5F);
+        botao_U.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_UMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_U, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 573, 50, 50));
+
+        botao_J.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/J.GIF"))); // NOI18N
+        botao_J.setAlignmentX(0.5F);
+        botao_J.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_JMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_J, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 513, 50, 50));
+
+        botao_N.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/N.GIF"))); // NOI18N
+        botao_N.setAlignmentX(0.5F);
+        botao_N.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_NMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_N, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 573, 54, 50));
+
+        botao_G.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/G.GIF"))); // NOI18N
+        botao_G.setAlignmentX(0.5F);
+        botao_G.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_GMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_G, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 513, 50, 50));
+
+        botao_P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/P.GIF"))); // NOI18N
+        botao_P.setAlignmentX(0.5F);
+        botao_P.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_PMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_P, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 573, 55, 50));
+
+        botao_E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/E.GIF"))); // NOI18N
+        botao_E.setAlignmentX(0.5F);
+        botao_E.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_EMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_E, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 513, 50, 50));
+
+        botao_F.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/F.GIF"))); // NOI18N
+        botao_F.setAlignmentX(0.5F);
+        botao_F.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_FMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_F, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 513, 54, 50));
+
+        botao_S.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/S.GIF"))); // NOI18N
+        botao_S.setAlignmentX(0.5F);
+        botao_S.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_SMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_S, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 573, 50, 50));
+
+        botao_X.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/X.GIF"))); // NOI18N
+        botao_X.setAlignmentX(0.5F);
+        botao_X.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_XMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_X, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 573, 50, 50));
+
+        botao_Q.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/Q.GIF"))); // NOI18N
+        botao_Q.setAlignmentX(0.5F);
+        botao_Q.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_QMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_Q, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 573, 50, 50));
+
+        botao_H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/H.GIF"))); // NOI18N
+        botao_H.setAlignmentX(0.5F);
+        botao_H.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botao_HMouseClicked(evt);
+            }
+        });
+        getContentPane().add(botao_H, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 513, 53, 50));
 
         Novo_Jogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/FORCA/NOVO.JPG"))); // NOI18N
         Novo_Jogo.setText("Novo_Jogo");
@@ -639,347 +859,17 @@ public class principal extends javax.swing.JFrame {
         });
         getContentPane().add(Botao_Mudar_Palavra, new org.netbeans.lib.awtextra.AbsoluteConstraints(601, 73, 189, 58));
 
-        jPanel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jButton5.setText("jButton5");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 300, -1, -1));
+        setJMenuBar(jMenuBar1);
 
-        labelForcaBracoDireito.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        labelForcaBracoDireito.setText("/");
-        jPanel1.add(labelForcaBracoDireito, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 36, 42));
-
-        labelForcaCabeca.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        labelForcaCabeca.setText("O");
-        jPanel1.add(labelForcaCabeca, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, -1, 42));
-
-        labelForcaPernaDireita.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        labelForcaPernaDireita.setText("/");
-        jPanel1.add(labelForcaPernaDireita, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, 42));
-
-        labelForcaBracoEsquerdo.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-        labelForcaBracoEsquerdo.setText("\\");
-            jPanel1.add(labelForcaBracoEsquerdo, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, 31, 42));
-
-            labelForcaPernaEsquerda.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-            labelForcaPernaEsquerda.setText("\\");
-                jPanel1.add(labelForcaPernaEsquerda, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 26, 42));
-
-                labelForcaCorpo.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
-                labelForcaCorpo.setText("|");
-                jPanel1.add(labelForcaCorpo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 26, 42));
-
-                getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 190, 220));
-
-                jPanel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
-
-                botao_Z.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/Z.GIF"))); // NOI18N
-                botao_Z.setAlignmentX(0.5F);
-                botao_Z.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_ZMouseClicked(evt);
-                    }
-                });
-
-                botao_Y.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/Y.GIF"))); // NOI18N
-                botao_Y.setAlignmentX(0.5F);
-                botao_Y.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_YMouseClicked(evt);
-                    }
-                });
-
-                botao_A.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/A.GIF"))); // NOI18N
-                botao_A.setAlignmentX(0.5F);
-                botao_A.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_AMouseClicked(evt);
-                    }
-                });
-
-                botao_V.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/V.GIF"))); // NOI18N
-                botao_V.setAlignmentX(0.5F);
-                botao_V.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_VMouseClicked(evt);
-                    }
-                });
-
-                botao_W.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/W.GIF"))); // NOI18N
-                botao_W.setAlignmentX(0.5F);
-                botao_W.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_WMouseClicked(evt);
-                    }
-                });
-
-                botao_M.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/M.GIF"))); // NOI18N
-                botao_M.setAlignmentX(0.5F);
-                botao_M.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_MMouseClicked(evt);
-                    }
-                });
-
-                botao_L.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/L.GIF"))); // NOI18N
-                botao_L.setAlignmentX(0.5F);
-                botao_L.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_LMouseClicked(evt);
-                    }
-                });
-
-                botao_C.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/C.GIF"))); // NOI18N
-                botao_C.setAlignmentX(0.5F);
-                botao_C.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_CMouseClicked(evt);
-                    }
-                });
-
-                botao_B.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/B.GIF"))); // NOI18N
-                botao_B.setAlignmentX(0.5F);
-                botao_B.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_BMouseClicked(evt);
-                    }
-                });
-
-                botao_O.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/O.GIF"))); // NOI18N
-                botao_O.setAlignmentX(0.5F);
-                botao_O.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_OMouseClicked(evt);
-                    }
-                });
-
-                botao_D.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/D.GIF"))); // NOI18N
-                botao_D.setAlignmentX(0.5F);
-                botao_D.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_DMouseClicked(evt);
-                    }
-                });
-
-                botao_K.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/K.GIF"))); // NOI18N
-                botao_K.setAlignmentX(0.5F);
-                botao_K.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_KMouseClicked(evt);
-                    }
-                });
-
-                botao_T.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/T.GIF"))); // NOI18N
-                botao_T.setAlignmentX(0.5F);
-                botao_T.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_TMouseClicked(evt);
-                    }
-                });
-
-                botao_I.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/I.GIF"))); // NOI18N
-                botao_I.setAlignmentX(0.5F);
-                botao_I.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_IMouseClicked(evt);
-                    }
-                });
-
-                botao_R.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/R.GIF"))); // NOI18N
-                botao_R.setAlignmentX(0.5F);
-                botao_R.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_RMouseClicked(evt);
-                    }
-                });
-
-                botao_U.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/U.GIF"))); // NOI18N
-                botao_U.setAlignmentX(0.5F);
-                botao_U.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_UMouseClicked(evt);
-                    }
-                });
-
-                botao_J.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/J.GIF"))); // NOI18N
-                botao_J.setAlignmentX(0.5F);
-                botao_J.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_JMouseClicked(evt);
-                    }
-                });
-
-                botao_N.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/N.GIF"))); // NOI18N
-                botao_N.setAlignmentX(0.5F);
-                botao_N.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_NMouseClicked(evt);
-                    }
-                });
-
-                botao_G.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/G.GIF"))); // NOI18N
-                botao_G.setAlignmentX(0.5F);
-                botao_G.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_GMouseClicked(evt);
-                    }
-                });
-
-                botao_P.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/P.GIF"))); // NOI18N
-                botao_P.setAlignmentX(0.5F);
-                botao_P.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_PMouseClicked(evt);
-                    }
-                });
-
-                botao_E.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/E.GIF"))); // NOI18N
-                botao_E.setAlignmentX(0.5F);
-                botao_E.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_EMouseClicked(evt);
-                    }
-                });
-
-                botao_F.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/F.GIF"))); // NOI18N
-                botao_F.setAlignmentX(0.5F);
-                botao_F.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_FMouseClicked(evt);
-                    }
-                });
-
-                botao_S.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/S.GIF"))); // NOI18N
-                botao_S.setAlignmentX(0.5F);
-                botao_S.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_SMouseClicked(evt);
-                    }
-                });
-
-                botao_X.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/X.GIF"))); // NOI18N
-                botao_X.setAlignmentX(0.5F);
-                botao_X.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_XMouseClicked(evt);
-                    }
-                });
-
-                botao_Q.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/Q.GIF"))); // NOI18N
-                botao_Q.setAlignmentX(0.5F);
-                botao_Q.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_QMouseClicked(evt);
-                    }
-                });
-
-                botao_H.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/Alfabeto/H.GIF"))); // NOI18N
-                botao_H.setAlignmentX(0.5F);
-                botao_H.addMouseListener(new java.awt.event.MouseAdapter() {
-                    public void mouseClicked(java.awt.event.MouseEvent evt) {
-                        botao_HMouseClicked(evt);
-                    }
-                });
-
-                javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-                jPanel2.setLayout(jPanel2Layout);
-                jPanel2Layout.setHorizontalGroup(
-                    jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(botao_A, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(botao_B, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(botao_C, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(botao_D, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(botao_E, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(botao_F, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(16, 16, 16)
-                                .addComponent(botao_G, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(botao_H, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(7, 7, 7)
-                                .addComponent(botao_I, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(botao_J, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(botao_K, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(8, 8, 8)
-                                .addComponent(botao_L, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(13, 13, 13)
-                                .addComponent(botao_M, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(botao_N, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(6, 6, 6)
-                                .addComponent(botao_O, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(9, 9, 9)
-                                .addComponent(botao_P, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(5, 5, 5)
-                                .addComponent(botao_Q, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(botao_R, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(7, 7, 7)
-                                .addComponent(botao_S, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(20, 20, 20)
-                                .addComponent(botao_T, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(botao_U, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(botao_V, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(botao_W, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(botao_X, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(botao_Y, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(10, 10, 10)
-                                .addComponent(botao_Z, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(12, Short.MAX_VALUE))
-                );
-                jPanel2Layout.setVerticalGroup(
-                    jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botao_A, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_B, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_C, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_D, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_E, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_F, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_G, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_H, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_I, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_J, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_K, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_L, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_M, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botao_N, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_O, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_P, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_Q, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_R, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_S, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_T, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_U, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_V, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_W, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_X, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_Y, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botao_Z, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(20, Short.MAX_VALUE))
-                );
-
-                getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 510, 810, 150));
-                setJMenuBar(jMenuBar1);
-
-                pack();
-            }// </editor-fold>//GEN-END:initComponents
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
 
     //Abaixo Codigos dos Botoes
     // // <editor-fold defaultstate="collapsed" desc="Generated Code">
@@ -991,7 +881,7 @@ public class principal extends javax.swing.JFrame {
         //sortearpalavra();
         mudaPalavra();
         FimDoJogo = false;
-        // labelImagemForca.setIcon(icon0);
+        labelImagemForca.setIcon(icon0);
         NumTentativas = 0;
         desenharpalavra(false);
         joga_nov.setVisible(false);
@@ -1009,7 +899,7 @@ public class principal extends javax.swing.JFrame {
         //sortearpalavra();
         mudaPalavra();
         FimDoJogo = false;
-        // labelImagemForca.setIcon(icon0);
+        labelImagemForca.setIcon(icon0);
         NumTentativas = 0;
         desenharpalavra(false);
         jogo_novo.setVisible(false);
@@ -1054,6 +944,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_Botao_SairActionPerformed
 
     private void botao_BMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_BMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("B");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1062,6 +953,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_BMouseClicked
 
     private void botao_CMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_CMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("C");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1070,6 +962,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_CMouseClicked
 
     private void botao_DMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_DMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("D");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1078,6 +971,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_DMouseClicked
 
     private void botao_EMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_EMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("E");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1086,6 +980,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_EMouseClicked
 
     private void botao_FMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_FMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("F");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1094,6 +989,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_FMouseClicked
 
     private void botao_HMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_HMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("H");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1102,6 +998,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_HMouseClicked
 
     private void botao_IMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_IMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("I");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1110,6 +1007,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_IMouseClicked
 
     private void botao_JMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_JMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("J");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1118,6 +1016,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_JMouseClicked
 
     private void botao_KMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_KMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("K");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1126,6 +1025,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_KMouseClicked
 
     private void botao_NMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_NMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("N");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1134,6 +1034,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_NMouseClicked
 
     private void botao_OMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_OMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("O");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1142,6 +1043,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_OMouseClicked
 
     private void botao_PMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_PMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("P");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1150,6 +1052,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_PMouseClicked
 
     private void botao_QMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_QMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("Q");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1158,6 +1061,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_QMouseClicked
 
     private void botao_RMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_RMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("R");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1166,6 +1070,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_RMouseClicked
 
     private void botao_SMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_SMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("S");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1174,6 +1079,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_SMouseClicked
 
     private void botao_TMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_TMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("T");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1182,6 +1088,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_TMouseClicked
 
     private void botao_UMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_UMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("U");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1190,6 +1097,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_UMouseClicked
 
     private void botao_VMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_VMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("V");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1198,6 +1106,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_VMouseClicked
 
     private void botao_WMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_WMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("W");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1206,6 +1115,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_WMouseClicked
 
     private void botao_XMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_XMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("X");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1214,6 +1124,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_XMouseClicked
 
     private void botao_YMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_YMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("Y");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1222,6 +1133,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_YMouseClicked
 
     private void botao_ZMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_ZMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("Z");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1230,6 +1142,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_ZMouseClicked
 
     private void botao_MMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_MMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("M");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1238,6 +1151,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_MMouseClicked
 
     private void botao_LMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botao_LMouseClicked
+
         if (!FimDoJogo) {//verifica se não é o fim do jogo
             verificarLetra("L");//se não for, pega a letra escrita e verifica se tem na palavra
         }
@@ -1246,6 +1160,7 @@ public class principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botao_LMouseClicked
 
     private void CadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarActionPerformed
+
         Cadastro formulario = new Cadastro();
         formulario.setVisible(true);
     }//GEN-LAST:event_CadastrarActionPerformed
@@ -1256,7 +1171,12 @@ public class principal extends javax.swing.JFrame {
 
     private void Novo_JogoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Novo_JogoMouseClicked
 
+
     }//GEN-LAST:event_Novo_JogoMouseClicked
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        labelImagemForca.setIcon(icon1);
+    }//GEN-LAST:event_jButton5ActionPerformed
     // // </editor-fold>
 
     //Abaixo Metodo Principal
@@ -1310,6 +1230,7 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1317,16 +1238,9 @@ public class principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JDialog joga_nov;
     private javax.swing.JDialog jogo_novo;
-    private javax.swing.JLabel labelForcaBracoDireito;
-    private javax.swing.JLabel labelForcaBracoEsquerdo;
-    private javax.swing.JLabel labelForcaCabeca;
-    private javax.swing.JLabel labelForcaCorpo;
-    private javax.swing.JLabel labelForcaPernaDireita;
-    private javax.swing.JLabel labelForcaPernaEsquerda;
+    private javax.swing.JLabel labelImagemForca;
     // End of variables declaration//GEN-END:variables
     // </editor-fold>
 }
