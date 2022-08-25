@@ -3,6 +3,8 @@
 ## Video sobre Transições CSS
 
 Video 01 - 55 min - https://www.youtube.com/watch?v=JJiyguTeBzU
+* Lista Videos CSS
+    * https://youtube.com/playlist?list=PL_zkXQGHYosG5_JLTLGG9i4-JaoBwi04R
 
 ## API
 * Explicacao sobre API Rest e Restfull

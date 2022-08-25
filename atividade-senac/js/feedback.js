@@ -123,11 +123,12 @@ function getHeaders() {
 }
 
 function mostraPagina(mostra) {
-    // Esconde
 
     if (mostra) {
-        // mostra
-        // busca os dados do usuario...
+
+        // $("#alert").addClass("alert-success");
+
+        // $("#alert").attr("role", "alert-success");
 
         $("#alert").show();
 
@@ -137,10 +138,12 @@ function mostraPagina(mostra) {
         let token_logado = localStorage.getItem('token_logado');
 
         const body = {
-            token_logado
+            "token_logado": token_logado,
+            "usucodigo": 1,
+            "idatividade": 1
         };
 
-        callApi("GET", "feedbacks", body, function(data) {
+        callApi("POST", "feedbacks", body, function(data) {
 
             console.log(data)
 
