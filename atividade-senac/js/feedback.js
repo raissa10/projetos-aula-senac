@@ -1,6 +1,8 @@
 // https://www.javascripttutorial.net/dom/events/add-an-event-handler/
 
 function onloadPage() {
+    return callApi();
+
     let token_logado = localStorage.getItem('token_logado');
 
     token_logado = token_logado.split(".");
@@ -16,7 +18,14 @@ function onloadPage() {
         // mostra a tela de dados
         $("#root").show();
 
+        // lista auxilios api Senac
+        // https://apisenac2022.herokuapp.com/api.php/auxilios
         mostraPagina(true);
+    } else {
+        // mostra a tela de login
+        $("#dados-login").show();
+
+        $("#root").hide();
     }
 }
 
@@ -43,41 +52,20 @@ function clickLogin(event) {
 
     $("#alert").hide();
 
-    console.log('Button Clicked');
-
     login(email, senha, "login", "POST");
-
-    // login(email, senha, "test", "POST");
-
-    // test
-    // https://github.github.io/fetch/
 }
 
-function getUrlBase() {
-    const cors_url = "https://corsvalidate.herokuapp.com/";
-
-    let url = cors_url + "https://apisenac2022.herokuapp.com/api.php/";
-
-
-    // Local
-    // url = "http://127.0.0.1:3333/api.php/";
-
-
-    return url;
-}
-
-async function login(email, senha, port, method) {
-    // const cors_url = "https://cors-anywhere.herokuapp.com/";
-
-    // Heroku Gelvazio
-    let url = getUrlBase();
-
+function getUrlBase(port) {
     if (port == undefined) {
         port = "ping";
     }
 
-    // Define a url
-    url = url + port;
+    return "https://cors-anywhere.herokuapp.com/https://apisenac2022.herokuapp.com/api.php/" + port;
+}
+
+async function login(email, senha, port, method) {
+    let url = getUrlBase(port);
+
 
     if (method == undefined) {
         method = "GET";
@@ -94,6 +82,7 @@ async function login(email, senha, port, method) {
         // Converting the response to a JSON object
         .then(response => response.json())
         .then(data => {
+
             var data = JSON.stringify(data);
 
             let dadoslogin = JSON.parse(data);
@@ -124,7 +113,7 @@ function getHeaders() {
         "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
         "Access-Control-Allow-Headers": "X-PINGOTHER, Content-Type",
         "Access-Control-Max-Age": "86400",
-        //"HTTP_HOST": "apisenac2022.herokuapp.com",
+        "HTTP_HOST": "apisenac2022.herokuapp.com",
         "Accept": "Application/json",
         "chave-api-dados": "15455",
         "Access-Control-Allow-Origin": "*",
@@ -151,9 +140,7 @@ function mostraPagina(mostra) {
             token_logado
         };
 
-        callApi("POST", "feedbackslist", body, function(data) {
-
-            debugger;
+        callApi("GET", "feedbacks", body, function(data) {
 
             console.log(data)
 
@@ -167,32 +154,48 @@ const btn = document.querySelector('#login');
 btn.addEventListener('click', clickLogin);
 
 function getMyInitFectahApi(method, body) {
+    let usaBody = false;
+    if (method == "POST") {
+        usaBody = true;
+    }
+
+    if (usaBody) {
+        return {
+            method: method,
+            headers: getHeaders(),
+            mode: 'cors',
+            cache: 'default',
+            body: JSON.stringify(body)
+        };
+    }
+
     return {
         method: method,
         headers: getHeaders(),
         mode: 'cors',
-        cache: 'default',
-        body: JSON.stringify(body)
+        cache: 'default'
     };
 }
 
-async function callApi(method, port, param, oCall) {
+async function callApi(method, port, body, oCall) {
+
+    if (body == undefined) {
+        body = "";
+    }
+
+    if (method == undefined) {
+        method = "GET";
+    }
 
     if (port == undefined) {
         port = "ping";
     }
 
+
     // Define a url
-    const url = getUrlBase() + port;
+    const url = getUrlBase(port);
 
-    let body = {
-        "usuemail": "BRANCO",
-        "ususenha": "BRANCO"
-    };
-
-    if (param) {
-        body = param;
-    }
+    console.log("url gerada:" + url);
 
     const myInit = getMyInitFectahApi(method, body);
 
@@ -200,13 +203,16 @@ async function callApi(method, port, param, oCall) {
         // Converting the response to a JSON object
         .then(response => response.json())
         .then(data => {
-            var data = JSON.stringify(data);
 
-            const dados = JSON.parse(data);
+            console.log(data)
+
+            //var data = JSON.stringify(data);
+
+            //const dados = JSON.parse(data);
 
             if (oCall) {
                 // Chama a function por parametor com os dados retornados...
-                oCall(dados);
+                //  oCall(dados);
             }
 
         })
