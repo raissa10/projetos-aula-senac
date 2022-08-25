@@ -13,8 +13,9 @@ Video 01 - 55 min - https://www.youtube.com/watch?v=JJiyguTeBzU
     * https://github.com/Gelvazio/projetos-senac/blob/main/6%20-%20APIS/respostas.md
 * Aplicativo para usar API
     * Insomnia
-        *
-
+    * Postmam
+    * Advanced Rest Client - Chrome
+    * Extensão VSCode
 ## APIS publicas
 * Video com varias ideias de apis publicas
    * https://www.youtube.com/watch?v=cL0KI9EwOEk
