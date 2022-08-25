@@ -320,7 +320,10 @@ public class principal extends javax.swing.JFrame {
         Verifica_Posicao_Vetor();//Verifica as posicoes do Vetor
 
         FimDoJogo = false; //Como ainda não é o fim do jogo, a opção se torna falsa
-        LabelImagem.setIcon(icon0); //seta o ícone normal, do desenho da forca
+        
+        //  NAO ESTA FUNCIONANDO...-VERIFICAR
+        // LabelImagem.setIcon(icon0); //seta o ícone normal, do desenho da forca
+        
         NumTentativas = 0; // zera o numero de tentativas
 
         desenharpalavra(false);
