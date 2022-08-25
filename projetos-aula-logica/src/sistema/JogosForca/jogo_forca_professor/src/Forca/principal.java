@@ -175,7 +175,9 @@ public class principal extends javax.swing.JFrame {
                 palavras_ja_usadas[i] = palavras_cadastradas[i];
                 PalavraSorteada = PalavraSorteada.toUpperCase();
                 conta_palavras_usadas++;
+                
                 desenharpalavra(false);
+                
                 break;
             }
         }
@@ -186,15 +188,25 @@ public class principal extends javax.swing.JFrame {
     //Método que desenha a palavra e os traços
     public void desenharpalavra(boolean Mostra_APalavra) {
         String tempTexto = new String();
+        tempTexto = "";
         boolean faltauma = false;
-        for (int n = 1; n <= PalavraSorteada.length(); n++) {
+        String palavraAtual = "";
+        String palavraAtual2 = "";
+        
+        for (int n = 1; n <= PalavraSorteada.length(); n++) {            
             //pega o tamanho da palavra e cria os tracinhos
             if ((Mostra_APalavra) || (Tentativas.contains(PalavraSorteada.substring(n - 1, n)))) {
+                
+                
                 tempTexto = tempTexto + PalavraSorteada.substring(n - 1, n);
             } else {
-                tempTexto = tempTexto + "_";
+                if(n > 1){
+                    tempTexto = tempTexto + "_";                    
+                }
+                
                 faltauma = true;
             }
+            
             tempTexto = tempTexto + " ";
         }
 
@@ -300,6 +312,7 @@ public class principal extends javax.swing.JFrame {
             tamanho_vetor = 0;
             dica = "";
         }
+        
         //Carrega as palavras do TXT para Os Vetores
         Carregar_Vetores();
 
