@@ -75,7 +75,10 @@ Video 01 - 55 min - https://www.youtube.com/watch?v=JJiyguTeBzU
 
 * JAVA BASICO PARA INICIANTES
     * https://www.youtube.com/watch?v=-ScDZBiqzS0&list=PLXjt2Adje6u7oDoeoMONpXc_4T65WiJVN
-
+* JAVA Loiane - Youtube
+  * https://www.youtube.com/channel/UCqQn92noBhY9VKQy4xCHPsg
+* github Loiane
+   * https://github.com/loiane/JogoDaForca
 ## Canais sobre Desenvolvimento - Geral
 * Descompila
     * https://www.youtube.com/c/Descompila/playlists
