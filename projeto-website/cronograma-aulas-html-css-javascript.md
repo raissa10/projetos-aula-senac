@@ -10,7 +10,8 @@
 * Exercicio sobre Listas e Tabelas
     * Fazer os exercicios de Fixação aqui=>apostilas/Aula 04 - Listas e Tabelas.pdf
     * Fazer os exercicios => apostilas/Exercicios - Listas e Tabelas.pdf
-
+    * Fazer exercicios do site abaixo:
+      * https://projetos-aula-senac.vercel.app/exercicios/index.html 
 ## Aula 05 - Formularios
 * Exercicio sobre Formularios
     * Fazer os exercicios de Fixação aqui=>apostilas/Aula 05 - Formularios.pdf
