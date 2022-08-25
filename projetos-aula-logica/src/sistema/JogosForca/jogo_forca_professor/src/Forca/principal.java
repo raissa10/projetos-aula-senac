@@ -22,6 +22,7 @@ public class principal extends javax.swing.JFrame {
     int conta_palavras_usadas = 0;
 
     boolean FimDoJogo = true;
+    
     ImageIcon icon0 = new ImageIcon("forca00.jpg");
     ImageIcon icon1 = new ImageIcon("forca11.jpg");
     ImageIcon icon2 = new ImageIcon("forca22.jpg");
@@ -29,6 +30,7 @@ public class principal extends javax.swing.JFrame {
     ImageIcon icon4 = new ImageIcon("forca44.jpg");
     ImageIcon icon5 = new ImageIcon("forca55.jpg");
     ImageIcon icon6 = new ImageIcon("forca66.jpg");
+    
     //Pontos
     int Melhor, ponto;
     static String palavras_cadastradas[] = new String[1000];
@@ -212,7 +214,7 @@ public class principal extends javax.swing.JFrame {
     public void verificarLetra(String Letra) {
         Letra = Letra.toUpperCase();
         if (Tentativas.contains(Letra)) {
-            // Mostrar mensagem de que já foi tentada esta letra
+            // Mostrar mensagem de que já foi tentada esta letra?
         } else {
             // Armazena a letra nova na lista de tentativas.
             Tentativas.add(Letra);
