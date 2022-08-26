@@ -7,32 +7,61 @@
     <meta http-equiv="Content-Language" content="pt">
     <link rel="STYLESHEET" type="text/css" href="./Exercicios HTML_files/site.css">
 
-    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
 </head>
 
+<style>
+    body {
+        background: linear-gradient(135deg, #c3a3f1, #6414e9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        align-content: center;
+        height: 95vh;
+    }
+    
+    a,
+    th,
+    td,
+    caption {
+        color: white;
+        text-align: center;
+        font-size: 25px;
+        text-decoration: none;
+        transition: all .2s ease-in;
+        cursor: pointer;
+    }
+    
+    caption {
+        background-color: #6414e9;
+        padding: 20 0px;
+    }
+    
+    td:hover,
+    a:hover {
+        background-color: #6414e9;
+        border-radius: 5px;
+    }
+    
+    td,
+    th {
+        padding: 15px;
+    }
+    
+    th {
+        background-color: #4a0eaab8;
+    }
+</style>
+
 <body>
-    <!-- <div class="barNav">
-        <a href="https://paginas.fe.up.pt/~ci07041/scc/principal.html">Home</a>
-        <a href="https://paginas.fe.up.pt/~ci07041/scc/lci-scc.html">Identificacao</a>
-        <a href="https://paginas.fe.up.pt/~ci07041/scc/o_grupo.html">Grupo</a>
-        <a target="_blank" href="https://www.fe.up.pt/si/disciplinas_geral.FormView?P_CAD_CODIGO=CINF029&amp;P_ANO_LECTIVO=2007/2008&amp;P_PERIODO=2S">Sistemas</a>
-        <a href="https://paginas.fe.up.pt/~ci07041/scc/trabalhos.html">Exercicios</a>
-        <a href="https://paginas.fe.up.pt/~ci07041/scc/notas.html">Notas...</a>
-        <a href="https://paginas.fe.up.pt/~ci07041/antonio/index.html">Antonio</a>
-        <a href="https://paginas.fe.up.pt/~ci07041/mariana/index.html">Mariana</a>
-        <a href="https://paginas.fe.up.pt/~ci07041/raquel/index.html">Raquel</a>
-    </div>
-    <br>
-    <br> -->
-    <h1>Exercicios de HTML</h1><br>
-    <p>A tabela abaixo mostra os enunciados e os respectivos trabalhos realizados pelos elementos do grupo durante as aulas de HTML.</p><br>
     <div class="centro">
         <table border="1">
             <caption>Exercicios de HTML e respectiva resolucao</caption>
             <tbody>
                 <tr>
                     <th>Enunciado (*)</th>
-                    <th>Codigo</th>
+                    <th>Código</th>
                     <th>Efeito</th>
                 </tr>
                 <tr>
