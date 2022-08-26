@@ -124,17 +124,25 @@ datas dos exercicios do dia.
    * Projeto Integrador - Aula 02 - Html,CSS e JavaScript
 
 * Aula 24-08-2022 - quarta-feira
-    * Iniciar assunto sobre Orientação a Objetos em JAVA - 02 - ArrayList
-    * Passar exercicios com ArrayList - Video FIAP - Collections.
+    * Projeto Integrador - Aula 02 - Html,CSS e JavaScript
 
 * Aula 25-08-2022 - quinta-feira
-    * 03 - Arquivo Texto
-    * Passar exercicios com Arquivo Texto
+    * Projeto Integrador - Aula 02 - Html,CSS e JavaScript
 
 ## 4ª Semana Agosto
 * Aula 29-08-2022 - segunda-feira
+Aula kk
+    * Iniciar assunto sobre Orientação a Objetos em JAVA - 02 - ArrayList
+    * Passar exercicios com ArrayList - Video FIAP - Collections.
+
+Alua xx
+    * 03 - Arquivo Texto
+    * Passar exercicios com Arquivo Texto
+
+Aula yy
     * Orientacao Objetos - Definicao 01 e Definicao 02
     * Passar exercicios com Classes, metodos, etc, criar classes simples com metodos
+
 
 * Aula 30-08-2022 - terça-feira
    * Projeto Integrador - Aula 03 - Html,CSS e JavaScript
