@@ -131,6 +131,11 @@ datas dos exercicios do dia.
 
 ## 4ª Semana Agosto
 * Aula 29-08-2022 - segunda-feira
+Aula ii
+    * Dar tempo em sala de aula para acabar o jogo da forca, tempo ate as 15 horas - intervalo
+    * Passar Exercicios com funcoes com parametros e sem parametros
+        * Fazer uma calculadora com funcoes
+
 Aula kk
     * Iniciar assunto sobre Orientação a Objetos em JAVA - 02 - ArrayList
     * Passar exercicios com ArrayList - Video FIAP - Collections.
