@@ -26,16 +26,23 @@ public class Criptografia {
 
     public static void main(String[] args) {
 
-        String textoCriptografado = codificaRot13("joao");
-        System.out.println("Texto criptografado: " + textoCriptografado);
-//        System.out.println("Texto criptografado: " + codificaRot13("pedro"));
-//        System.out.println("Texto criptografado: " + codificaRot13("maria"));
-//        System.out.println("Texto criptografado: " + codificaRot13("yasmim"));
-//        System.out.println("Texto criptografado: " + codificaRot13("alex"));
-//        System.out.println("Texto criptografado: " + codificaRot13("gelvazio"));
-//
+        String textoCriptografado01 = codificaRot13("joao");
+        String textoCriptografado02 = codificaRot13("pedro");
+        String textoCriptografado03 = codificaRot13("maria");
+        String textoCriptografado04 = codificaRot13("yasmim");
+        String textoCriptografado05 = codificaRot13("alex");
 
-        System.out.println("Texto descriptografado: " + decodificaRot13(codificaRot13(textoCriptografado)));
+        System.out.println("Texto criptografado 01: " + textoCriptografado01);
+        System.out.println("Texto criptografado 02: " + textoCriptografado02);
+        System.out.println("Texto criptografado 03: " + textoCriptografado03);
+        System.out.println("Texto criptografado 04: " + textoCriptografado04);
+        System.out.println("Texto criptografado 05: " + textoCriptografado05);
+
+        System.out.println("Texto descriptografado 01: " + decodificaRot13(textoCriptografado01));
+        System.out.println("Texto descriptografado 02: " + decodificaRot13(textoCriptografado02));
+        System.out.println("Texto descriptografado 03: " + decodificaRot13(textoCriptografado03));
+        System.out.println("Texto descriptografado 04: " + decodificaRot13(textoCriptografado04));
+        System.out.println("Texto descriptografado 05: " + decodificaRot13(textoCriptografado05));
     }
 
     public static String codificaRot13(String texto){
@@ -75,7 +82,6 @@ public class Criptografia {
 
                     // Algoritom de ROT
                     int nova_posicao = i + 13;
-
                     if(nova_posicao >= 26){
                         nova_posicao = nova_posicao - 26;
                     }
@@ -130,20 +136,20 @@ public class Criptografia {
 
                     // Algoritmo de ROT
                     int nova_posicao = i - 13;
-
                     if(nova_posicao < 0){
-                        nova_posicao = nova_posicao + 13;
+                        nova_posicao = i + 13;
                     }
 
                     String nova_letra = alfabeto[nova_posicao];
 
-                    //System.out.println("Nova letra criptografada:" + nova_letra);
-                    texto_descriptografado_final = texto_descriptografado_final + nova_letra;
+                    // System.out.println("Nova letra descriptografada:" + nova_letra);
+
+                    texto_descriptografado = texto_descriptografado + nova_letra;
                 }
             }
         }
 
-        return texto_descriptografado_final;
+        return texto_descriptografado;
     }
 }
 
