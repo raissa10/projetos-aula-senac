@@ -40,5 +40,22 @@ public class Exercicio01 {
         return resultado;
     }
 
+    // soma
+    public static int operacao(int n1, int n2){
+        return n1 + n2;
+    }
+
+    // divisao
+    public static double operacao(double n1, double n2){
+        return n1 / n2;
+    }
+
+    // multiplicacao
+    public static double operacao(double n1, int n2){
+        return n1 * n2;
+    }
+
+
+
 
 }

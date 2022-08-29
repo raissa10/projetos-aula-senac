@@ -1,6 +1,7 @@
 package aula29082022;
 
 public class Exercicio04 {
+
     // Exercicio 11.24 da Apostila de Exercicios JAVA.
     //O algoritmo de César de criptografia de strings é uma versão melhorada do algoritmo rot13
     //(veja exercício 11.23): o seu funcionamento é o mesmo, só que, em vez de substituir cada caracter por um caracter treze posições depois, o algoritmo de César recebe um valor chamado
@@ -16,5 +17,7 @@ public class Exercicio04 {
     //símbolos devem continuar como estão. Escreva também o método decodificaCésar.
     //Dica: Para simplificar o algoritmo, considere que o valor da chave só pode estar entre 1 e 25.
     //Existem ao menos duas maneiras de implementar esse algoritmo.
+
+
 
 }
