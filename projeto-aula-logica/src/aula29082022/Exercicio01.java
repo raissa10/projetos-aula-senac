@@ -5,15 +5,15 @@ public class Exercicio01 {
     // site:http://www.universidadejava.com.br/java/
     // Exercícios sobre métodos
     //Crie uma classe chamada Calculadora. Esta classe deve possuir os seguintes métodos:
-    //public double operacao(double num1, double num2); Retorna a soma dos dois números.
+    //public double soma(double num1, double num2); Retorna a soma dos dois números.
     //
-    //public double operacao(int num1, double num2); Retorna a subtração dos dois números.
+    //public double subtracao(int num1, double num2); Retorna a subtração dos dois números.
     //
-    //public double operacao(double num1, int num2); Retorna o produto dos dois números.
+    //public double produto(double num1, int num2); Retorna o produto dos dois números.
     //
-    //public double operacao(int num1, int num2); Retorna o resultado da divisão dos dois números.
+    //public double divisao(int num1, int num2); Retorna o resultado da divisão dos dois números.
     //
-    //public double operacao(int num1, short num2); Retorna o resto da divisão dos dois números.
+    //public double restodivisao(int num1, short num2); Retorna o resto da divisão dos dois números.
     //
     //Elabore um roteiro de teste para a sua calculadora e observe os resultados.
 
