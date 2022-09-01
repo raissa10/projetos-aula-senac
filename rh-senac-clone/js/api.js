@@ -64,7 +64,14 @@ function getUrlBase(port) {
         port = "ping";
     }
 
-    return "https://cors-anywhere.herokuapp.com/https://apisenac2022.herokuapp.com/api.php/" + port;
+    // API PHP SLIM - PHP
+    // return "https://cors-anywhere.herokuapp.com/https://apisenac2022.herokuapp.com/api.php/" + port;
+
+    // API JAVA - SPRING WEB API
+    return "https://cors-anywhere.herokuapp.com/https://spring-web-api-dio.herokuapp.com/" + port;
+
+    // folha
+    // https://spring-web-api-dio.herokuapp.com/folha
 }
 
 function getHeaders() {
