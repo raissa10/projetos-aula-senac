@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -27,16 +27,6 @@
         border-radius: 15px;
         cursor: pointer;
     }
-    /* th,
-    td {
-        width: 100px;
-    }
-
-    th {
-        display: flex;
-        justify-content: flex-start;
-        width: 100px;
-    } */
     
     .open-detalheFolhaPagamento {
         border: none;
@@ -45,8 +35,11 @@
     }
     
     .open-detalheFolhaPagamento:hover {
-        /* background-color: rgba(98, 102, 102, 0.275); */
         border-radius: 15px;
+    }
+    
+    body {
+        overflow: auto;
     }
 </style>
 
@@ -183,7 +176,12 @@
             </section>
 
             <section class="footer-main">
-                <div class="footer-card-folhas">Folhas</div>
+                <div class="footer-card-folhas">
+                    <h4>
+                        Folhas
+                    </h4>
+                    <button type="button" class="btn btn-primary" onclick="getFolha()">Listar Folhas</button>
+                </div>
                 <div class="footer-card-detalhe-folhas">
                     <!-- Modal -->
                     <div class="modal fade" id="modalFolhaPagamento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="width: 100vw;">
@@ -422,7 +420,7 @@
                             <th>Líquido</th>
                             <th align="right">Detalhar</th>
                         </thead>
-                        <tbody>
+                        <tbody class="containerTable-body">
                             <tr>
                                 <td>01/02/2022</td>
                                 <td>Folha Mensal</td>
@@ -505,6 +503,7 @@
 </body>
 
 <script src="https://unpkg.com/boxicons@2.1.2/dist/boxicons.js"></script>
+<script src="js/api.js" defer></script>
 
 <!-- bootstrap -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
