@@ -22,5 +22,9 @@ AULA SIMPLES DE COMO USAR NUM PROJETO RAPIDO
 09 - PASSAR SLIDES DE REGRAS DE NEGOCIOS
 
 10 - PEGAR EXEMPLOS DO LUCID CHART
+	diagrama exemplo
+		-> https://lucid.app/documents/view/dd435135-f1df-4ab5-a804-91083b6053b9
+		
+		
 
 
