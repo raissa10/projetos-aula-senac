@@ -1,7 +1,6 @@
+- Projeto WebSite
 
-* Projeto WebSite
-    * https://projeto-website.vercel.app/
+  - https://projeto-website.vercel.app/
 
-* Projeto Atividades Senac
-    * https://projetos-aula-senac.vercel.app/
-
+- Projeto Atividades Senac
+  - https://projetos-aula-senac.vercel.app/

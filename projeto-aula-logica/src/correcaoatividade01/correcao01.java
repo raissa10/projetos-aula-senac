@@ -7,6 +7,8 @@ public class correcao01 {
 
     public static void main(String[] args) {
 
+        testaPerfeitoExercicio35ok();
+
         // testaPerfeitoExercicio52();
         // testaPerfeitoExercicio65();
         // testaPerfeitoExercicio66();
@@ -18,11 +20,42 @@ public class correcao01 {
         // testaPerfeitoExercicio38(2000,20);
 
 
-        testaAlgoritmo(9);
+        //testaAlgoritmo(9);
         // algoritmo38Salario();
         // System.out.println("Exercicio Yasmim...\n\n\n");
         // exercicioYasmin66();
         // exercicio66grupo2();
+    }
+
+    static void testaPerfeitoExercicio35ok() {
+        Scanner ler = new Scanner(System.in);
+
+        // 14130 para 15 - Douglas
+
+        double raio = 0, vol = 0, pi = 3.14;
+
+        // Faça um algoritmo que receba do usuario o raio em cm e calcule o volume de
+        // uma esfera.
+        // Formula:
+        // VOLUME = 4 * PI *  R ao cubo.
+
+        System.out.println("Informe o raio em cm");
+        raio = ler.nextDouble();
+
+        vol = (4 * pi) * raio * raio * raio /3;
+
+        double vol2 = (4 * pi)      * Math.pow(raio, 3);
+
+        double vol3 = Math.pow(2, 3);
+
+//        2 * 2 * 2
+
+        System.out.println("O volume da esfera e: " + vol);
+
+        System.out.println("O volume da esfera testado e: " + vol2);
+
+        System.out.println("Teste elevado: " + vol3);
+
     }
 
     static void testaPerfeitoExercicio38(float salario, float horas_extras) {
