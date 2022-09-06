@@ -1,0 +1,123 @@
+@import "general.css";
+
+.billbox {
+	width: 30.7%;	
+}
+
+@media (max-width: 1024px) {
+	.billbox {
+		width: 47%;
+	}	
+}
+
+@media (max-width: 800px) {
+	.billbox {
+		width: 100%;
+	}	
+}
+
+.billbox .center {
+	text-align: center; display: block;
+}
+
+.billbox .thumb {	
+	width: 100%;
+	height: 200px;
+	text-align: center;	
+	background: rgb(173,217,228); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(173,217,228,1) 0%, rgba(217,237,242,1) 60%, rgba(255,255,255,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(173,217,228,1)), color-stop(60%,rgba(217,237,242,1)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(173,217,228,1) 0%,rgba(217,237,242,1) 60%,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(173,217,228,1) 0%,rgba(217,237,242,1) 60%,rgba(255,255,255,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgba(173,217,228,1) 0%,rgba(217,237,242,1) 60%,rgba(255,255,255,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom, rgba(173,217,228,1) 0%,rgba(217,237,242,1) 60%,rgba(255,255,255,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#add9e4', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */	
+}
+
+.billbox .thumb.deadline {
+	background: rgb(255,168,168); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(255,168,168,1) 0%, rgba(252,207,207,1) 55%, rgba(255,255,255,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,168,168,1)), color-stop(55%,rgba(252,207,207,1)), color-stop(100%,rgba(255,255,255,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(255,168,168,1) 0%,rgba(252,207,207,1) 55%,rgba(255,255,255,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(255,168,168,1) 0%,rgba(252,207,207,1) 55%,rgba(255,255,255,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgba(255,168,168,1) 0%,rgba(252,207,207,1) 55%,rgba(255,255,255,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom, rgba(255,168,168,1) 0%,rgba(252,207,207,1) 55%,rgba(255,255,255,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffa8a8', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+}
+
+.billbox .thumb .month {
+	font-size: 4.9em;
+	color: #333;	
+	text-shadow: -1px 0 #666, 0 1px #666, 1px 0 #666, 0 -1px #666;
+}
+
+.billbox .thumb .month.deadline {
+	color: #b94a48;	
+	text-shadow: -1px 0 #b94a48, 0 1px #b94a48, 1px 0 #b94a48, 0 -1px #b94a48;
+}
+
+.billbox .thumb .date {
+	padding-top: 100px;
+}
+
+.billbox .thumb .year {
+	font-size: 1.7em;
+	color: #555;
+	top:-28px; 	
+}
+
+.billbox .thumb .year.deadline {
+	color: #b94a48;
+}
+
+.billbox .value {
+	font-size: 1.9em;
+	line-height: 64px;
+	vertical-align: top;
+	color: #333f4f;
+}
+
+@media (max-width: 372px) {
+	.billbox .value {
+		font-size: 1.4em;
+	}
+	
+	.billbox .thumb {
+		height: 150px;
+	} 
+	
+	.billbox .thumb .date {
+		padding-top: 75px;
+	}	
+}
+
+.billbox .value-icon {
+	background-image: url("../images/money.png");      
+    height: 56px;
+    width: 64px;
+    background-repeat:no-repeat;
+    display: inline-block;	
+}
+
+.show-bigger-500px {
+		
+}
+
+@media (max-width: 500px) {
+	.show-bigger-500px {
+		display: none;
+	}
+}
+
+#copypath {
+	resize: none;
+	width: 95%;
+	height: 25px;
+	font-size: 18px;
+}
+
+@media (max-width: 600px) {
+	#copypath {
+		height: auto;
+	}
+}

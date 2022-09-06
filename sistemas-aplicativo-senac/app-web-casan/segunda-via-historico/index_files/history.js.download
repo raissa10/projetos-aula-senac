@@ -1,0 +1,242 @@
+$(function() {
+	var alreadyFetched = [];
+	
+	// ajax
+	function getHistoryByYear_ajax(year, doneCallback) {	
+		var request = $.ajax({
+			  url: $("#_path").val() + "api/consumption/history/" + year,		  
+			  type: "GET",
+			  dataType: "json"	  
+		});
+
+		request.done(doneCallback);
+		
+		request.fail(function(jqXHR, textStatus) {			
+			alert('Não foi possível listar suas faturas. Tente novamente mais tarde.');
+		});
+	}
+
+	function updateScreen(data) {
+		var year = $("#historyYears").val();
+		$("#historyYearsToCompare").val(-1);
+		$("#historyYearsToCompare option").attr('disabled', false);
+		$('#historyYearsToCompare option[value="' + year + '"]').attr('disabled', true);
+		
+		$(".btn-group button").removeClass("active");
+		$("#btnVolume").addClass('active');
+		renderTable(data);
+		$('#btnVolume').click();
+	}
+	
+	// table
+	function renderTable(data) {
+		var element = '#historyTable tbody';
+		var result = "";
+		$.each(data, function(index, value) {	
+			var reading_number = (value["reading_number"] == null)? '-' : value["reading_number"];
+			result += '<tr><td>' + value["reference"] + '</td>';			
+			result += '<td>' + reading_number + '</td>';
+			result += '<td>' + value["volume"] + '</td>';
+			result += '<td> R$ ' + value["currency_value"] + '</td>';				
+			result += '</tr>';
+		});
+		
+		if (data.length == 0) {
+			result += '<tr><td colspan="4">Não foram registrados volumes fornecidos no período para este CPF/CNPJ nesta unidade</td></tr>';
+		}	
+		$(element).html(result);	
+	}
+		
+	// chart
+	var options = {
+			series: {
+				lines: {
+					show: true
+				},
+				points: {
+					show: true
+				}
+			},
+			grid: {
+				hoverable: true,
+				clickable: false
+			},
+			xaxis: {
+				mode: "time",				
+				minTickSize: [1, "month"]
+			}
+		};
+	
+	var selectedChart = "volume";
+	
+	function plotChart(compareData) {		
+		data = [];		
+		var currentYear = $("#historyYears").val();
+
+		function formatSeries(year, fetchedData){
+			series = [];
+			$.each(fetchedData, function(index, value) {
+				split = value["reference"].split("/");
+				if (typeof compareData != "undefined") {
+					reference = new Date(1900, split[0]-1, 1, 0, 0, 0, 0).getTime();
+				} else {
+					reference = new Date(split[1], split[0]-1, 1, 0, 0, 0, 0).getTime();
+				}
+				series.push([reference, value[selectedChart]]);				
+			});
+			
+			var label = (year == 1)? "Últimos 12 meses" : year;
+			data.push({label: label, data: series});			
+		}		
+		
+		if (typeof compareData != "undefined") {
+			formatSeries(currentYear, alreadyFetched[currentYear]);
+			formatSeries($("#historyYearsToCompare").val(), compareData);
+		} else {
+			formatSeries(currentYear, alreadyFetched[currentYear]);
+		}
+		
+		//var label = (year == 1)? "Últimos 12 meses" : year;
+		$.plot("#historyChart", data, options);
+		updateChartSubtitle();
+	}
+	
+	function updateChartSubtitle() {		
+		var str = "";	
+		var year = $("#historyYears").val();
+		var label = (year == 1)? "nos <b>Últimos 12 meses</b>" : "em <b>" + year + "</b>";		
+		if (selectedChart == "value") {
+			str += "Valores das Faturas ";
+		} else if (selectedChart == "volume") {
+			str += "Volumes Fornecidos ";
+		} else {
+			str += "Leituras do Hidrômetro ";
+		}
+		str += label;
+		
+		$('.chart-subtitle').html(str);
+		
+		if (year == 1)
+			$("#historyYearsToCompare").hide();
+		else
+			$("#historyYearsToCompare").show();
+			
+	}
+	
+	// events	
+	var previousPoint = null;
+	$("#historyChart").bind("plothover", function (event, pos, item) {		
+		if (item) {
+			if (previousPoint != item.dataIndex) {
+				previousPoint = item.dataIndex;
+				$("#tooltip").remove();
+				
+				var x = item.datapoint[0].toFixed(2),
+				y = item.datapoint[1].toFixed(2);
+				
+				var date = new Date(parseInt(x));
+				var xdesc = (date.getMonth()+1) + "/";
+				
+				if (date.getFullYear() == 1900) { // se tem mais de uma série plotada no gráfico.					
+					xdesc += item.series.label;
+				} else {
+					xdesc += date.getFullYear();
+				}
+				
+				var ydesc; 
+				if (selectedChart == "value") {
+					ydesc = " R$ " + parseFloat(y).toFixed(2).replace(".", ",");
+				} else {
+					ydesc = parseInt(y) + " m³";
+				}	
+				
+				var caption = ydesc + ' em ' + xdesc;				
+				var xpos; // depois da metade do gráfico inverte o lado do tooltip 
+				if (previousPoint < parseInt(item.series.data.length/2)) {
+					xpos = item.pageX - (caption.length*6);
+				} else {
+					xpos = item.pageX + 5;
+				}
+				
+				showTooltip(xpos, item.pageY, caption);
+			}
+		} else {
+			$("#tooltip").remove();
+			previousPoint = null;            
+		}
+	});
+	
+	$('#historyYears').change(function (e) {		
+		var year = $(this).val();				
+		// se conteúdo já foi carregado não requisita novamente
+		if (typeof alreadyFetched[year] == "undefined") {
+			
+			getHistoryByYear_ajax(year,
+				function(data, textStatus, jqXHR) {			
+					if (jqXHR.status == 200) {
+						alreadyFetched[year] = data;
+						updateScreen(data);
+					}
+				}			
+			);
+		} else { 
+			updateScreen(alreadyFetched[year]);
+		}
+	});	
+	
+	$('#historyYearsToCompare').change(function (e) {		
+		var year = $(this).val();				
+		// se conteúdo já foi carregado não requisita novamente
+		if (typeof alreadyFetched[year] == "undefined") {
+			
+			getHistoryByYear_ajax(year, 
+				function(data, textStatus, jqXHR) {			
+					if (jqXHR.status == 200) {
+						alreadyFetched[year] = data;
+						plotChart(data);
+					}
+				}					
+			);
+		} else { 
+			plotChart(alreadyFetched[year]);
+		}
+	});		
+
+	$('#btnVolume').click(function (e) {
+		options["yaxis"] = {
+			tickDecimals: 2,
+			tickFormatter: function (v) {
+				return v + " m³";
+			}
+		};
+		selectedChart = "volume";
+		if ($("#historyYearsToCompare").val() != -1)
+			plotChart(alreadyFetched[$("#historyYearsToCompare").val()]);
+		else
+			plotChart();
+	});	
+	
+	$('#btnReading').click(function (e) {
+		options["yaxis"] = {
+			tickDecimals: 2,
+			tickFormatter: function (v) {
+				return v + " m³";				
+			}
+		};	
+		selectedChart = "reading_number";
+		if ($("#historyYearsToCompare").val() != -1)
+			plotChart(alreadyFetched[$("#historyYearsToCompare").val()]);
+		else
+			plotChart();
+	});		
+		
+	// on load event
+	getHistoryByYear_ajax(1, 
+		function(data, textStatus, jqXHR) {			
+			if (jqXHR.status == 200) {
+				alreadyFetched[1] = data;
+				updateScreen(data);
+			}
+		}			
+	);	
+});
