@@ -3,8 +3,6 @@
 :root{
 	--font-primary: 'Fugaz One', cursive;
 	--font-main: 'Roboto', sans-serif;
-
-	--font-secondary: 
 }
 
 .font-primary{
@@ -66,9 +64,9 @@ h1, h2{
 
 
 /* Portrait and Landscape */
-@media only screen 
+@media only screen
   and (min-device-width: 320px) {
-  
+
 	/* #region 2nd level containers (children of .container) */
 	/************************** 2nd level containers */
 
@@ -212,8 +210,8 @@ h1, h2{
 		flex-flow:row nowrap;
 		justify-content:space-between;
 	}
-	
-	
+
+
 	.title{
 		/* text-shadow: 2px 2px 8px #000000; */
 		margin-bottom:30px;
@@ -238,7 +236,7 @@ h1, h2{
 	}
 
 	/* menu pops out when nav-item is clicked */
-	
+
 	/* #endregion */
 
 	/* #region Game Container */
@@ -301,7 +299,7 @@ h1, h2{
 	.deckCover{
 		transform:rotate(90deg);
 		margin-bottom:10%;
-		background-image:url('../img/card_faces/card_back_darkBlue.svg');	
+		background-image:url('../img/card_faces/card_back_darkBlue.svg');
 	}
 
 	/* Hand */
@@ -312,14 +310,14 @@ h1, h2{
 		justify-content:center;
 		width:90%;
 	}
-	
+
 	.hand{
 		width:100%;
 		display:flex;
 		flex-flow:row nowrap;
 		justify-content:space-around;
 	}
-	
+
 	.card {
 		height:162px;
 		width:116px;
@@ -414,7 +412,7 @@ h1, h2{
 
 }
 
-@media screen and (orientation:portrait) { 
+@media screen and (orientation:portrait) {
 	.turnDevice{
 		display:flex;
 	}
