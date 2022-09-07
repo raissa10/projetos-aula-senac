@@ -97,7 +97,6 @@ class Medico {
 
     }
 
-
     public function findAll(){
         $sql  = "SELECT * FROM $this->table";
         $stmt = DB::prepare($sql);

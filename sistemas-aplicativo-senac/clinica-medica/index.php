@@ -16,7 +16,7 @@
 
 </head>
 <body id="wallpaper_login">
-<section><h1 id="tituloIndex">Bem vindo ao Clinica Martin</h1>
+<section><h1 id="tituloIndex">Bem vindo a Clinica Martin</h1>
     <br/>
     <h3 id="tituloIndex">Se cadastre e encontre os melhore médicos</br>pelos melhores preços</h3></section>
 
