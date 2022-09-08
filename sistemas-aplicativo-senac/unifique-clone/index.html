@@ -13,6 +13,7 @@
     <meta name="Robots" content="All">
     <meta name="Revisit" content="1 week">
     <meta http-equiv="Content-Type" content="text/html; ISO-8859-1">
+
     <!-- favicon -->
     <link rel="apple-touch-icon" sizes="57x57" href="https://servicos.unifique.com.br/apple-touch-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="114x114" href="https://servicos.unifique.com.br/apple-touch-icon-114x114.png">
@@ -29,6 +30,7 @@
     <link rel="icon" type="image/png" href="https://servicos.unifique.com.br/favicon-32x32.png" sizes="32x32">
     <meta name="msapplication-TileColor" content="#253a76">
     <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+
     <!-- /favicon -->
     <title>Central do assinante - Rede Unifique</title>
     <link href="./unifique_files/jquery-ui-1.10.4.min.css" rel="stylesheet">
@@ -44,6 +46,7 @@
     <link href="./unifique_files/css2" rel="stylesheet">
 
     <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/theme.css">
 
     <!--[if lt IE 9]>
 			<script src="/js/html5shiv.js"></script>
@@ -88,6 +91,20 @@
         a.whats {
             text-decoration: none;
         }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            width: 100vw;
+            background-color: rgb(95, 255, 71);
+        }
+        
+        .centro {
+            display: flex;
+            justify-content: center;
+            width: 100vw;
+            background-color: tomato;
+        }
     </style>
 </head>
 
@@ -115,8 +132,8 @@
     </noscript>
 
     <!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top visible-xs" role="navigation">
-        <div class="container">
+    <div class="navbar navbar-default navbar-fixed-top visible-xs centro" role="navigation">
+        <div class="container centro">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
 				<span class="sr-only">Toggle navigation</span>
@@ -129,17 +146,17 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="https://servicos.unifique.com.br/">Home</a></li>
-                    <li><a href="https://servicos.unifique.com.br/cobrancas/pagas/" onclick="registraLog(&#39;cobrancasPagas&#39;)" class="current">Cobran�as pagas</a></li>
-                    <li><a href="https://servicos.unifique.com.br/cobrancas/abertas/" onclick="registraLog(&#39;cobrancasEmAberto&#39;)">Cobran�as em aberto</a></li>
-                    <li class="disabled"><a href="https://servicos.unifique.com.br/gerenciar/emails/" onclick="registraLog(&#39;gerenciarEmails&#39;)">Gerenciar e-mails</a></li>
-                    <li class="disabled"><a href="https://servicos.unifique.com.br/gerenciar/dominios/" onclick="registraLog(&#39;gerenciarDominios&#39;)">Gerenciar dominios</a></li>
-                    <li class="disabled"><a href="https://servicos.unifique.com.br/gerenciar/ftps/" onclick="registraLog(&#39;usuariosFtps&#39;)">Usu�rios de FTPs</a></li>
-                    <li class="disabled"><a href="https://servicos.unifique.com.br/gerenciar/bancodedados/" onclick="registraLog(&#39;bancoDeDados&#39;)">Banco de dados</a></li>
-                    <li><a href="https://servicos.unifique.com.br/telefonia/" onclick="registraLog(&#39;telefonia&#39;)">Telefonia</a></li>
-                    <li><a href="https://servicos.unifique.com.br/tv/" onclick="registraLog(&#39;tv&#39;)">TV</a></li>
-                    <li><a href="https://servicos.unifique.com.br/internet/wifi/" onclick="registraLog(&#39;redeSenhaWifi&#39;)">Rede e Senha Wi-Fi</a></li>
-                    <li><a href="https://servicos.unifique.com.br/ouvidoria/" onclick="registraLog(&#39;ouvidoria&#39;)">Ouvidoria</a></li>
-                    <li><a href="https://servicos.unifique.com.br/suporte/" onclick="registraLog(&#39;suporte&#39;)">Solicitar suporte</a></li>
+                    <li><a href="https://servicos.unifique.com.br/cobrancas/pagas/" onclick="registraLog(cobrancasPagas)" class="current">Cobrancas pagas</a></li>
+                    <li><a href="https://servicos.unifique.com.br/cobrancas/abertas/" onclick="registraLog(cobrancasEmAberto)">Cobrancas em aberto</a></li>
+                    <li class="disabled"><a href="https://servicos.unifique.com.br/gerenciar/emails/" onclick="registraLog(gerenciarEmails)">Gerenciar e-mails</a></li>
+                    <li class="disabled"><a href="https://servicos.unifique.com.br/gerenciar/dominios/" onclick="registraLog(gerenciarDominios)">Gerenciar dominios</a></li>
+                    <li class="disabled"><a href="https://servicos.unifique.com.br/gerenciar/ftps/" onclick="registraLog(usuariosFtps)">Usu�rios de FTPs</a></li>
+                    <li class="disabled"><a href="https://servicos.unifique.com.br/gerenciar/bancodedados/" onclick="registraLog(bancoDeDados)">Banco de dados</a></li>
+                    <li><a href="https://servicos.unifique.com.br/telefonia/" onclick="registraLog(telefonia)">Telefonia</a></li>
+                    <li><a href="https://servicos.unifique.com.br/tv/" onclick="registraLog(tv)">TV</a></li>
+                    <li><a href="https://servicos.unifique.com.br/internet/wifi/" onclick="registraLog(redeSenhaWifi)">Rede e Senha Wi-Fi</a></li>
+                    <li><a href="https://servicos.unifique.com.br/ouvidoria/" onclick="registraLog(ouvidoria)">Ouvidoria</a></li>
+                    <li><a href="https://servicos.unifique.com.br/suporte/" onclick="registraLog(suporte)">Solicitar suporte</a></li>
                     <li><a href="https://servicos.unifique.com.br/logout/">Sair</a></li>
                 </ul>
             </div>
@@ -148,17 +165,17 @@
     </div>
     <img style="max-width:432px;" src="./unifique_files/logo2017.png" width="100%">
     <ul class="iconMenuDark hidden-xs">
-        <li><a title="Cobran�as pagas" href="https://servicos.unifique.com.br/cobrancas/pagas/" onclick="registraLog(&#39;cobrancasPagas&#39;)" class="current"><span class="ico_light_cobrancas_pagas"></span>Cobran�as Pagas</a></li>
-        <li><a title="Cobran�as em aberto" href="https://servicos.unifique.com.br/cobrancas/abertas/" onclick="registraLog(&#39;cobrancasEmAberto&#39;)"><span class="ico_light_cobrancas_abertas"></span>Cobran�as em aberto</a></li>
-        <li class="disabled"><a title="Gerenciar e-mails (Plano n�o contratado)" href="https://servicos.unifique.com.br/cobrancas/pagas/#" onclick="registraLog(&#39;gerenciarEmails&#39;)"><span class="ico_light_emails"></span>Gerenciar e-mails</a></li>
-        <li class="disabled"><a title="Gerenciar dom�nios (Plano n�o contratado)" href="https://servicos.unifique.com.br/cobrancas/pagas/#" onclick="registraLog(&#39;gerenciarDominios&#39;)"><span class="ico_light_dominios"></span>Gerenciar dominios</a></li>
-        <li class="disabled"><a title="Gerenciar usu�rios de FTP (Plano n�o contratado)" href="https://servicos.unifique.com.br/cobrancas/pagas/#" onclick="registraLog(&#39;usuariosFtps&#39;)"><span class="ico_light_ftps"></span>Usu�rios de FTPs</a></li>
-        <li class="disabled"><a title="Gerenciar banco de dados (Plano n�o contratado)" href="https://servicos.unifique.com.br/cobrancas/pagas/#" onclick="registraLog(&#39;bancoDeDados&#39;)"><span class="ico_light_bases"></span>Banco de dados</a></li>
-        <li><a title="Gerenciar telefonia" href="https://servicos.unifique.com.br/telefonia/" onclick="registraLog(&#39;telefonia&#39;)"><span class="ico_light_telefonia"></span>Telefonia</a></li>
-        <li><a title="Gerenciar TV" href="https://servicos.unifique.com.br/tv/" onclick="registraLog(&#39;tv&#39;)"><span class="ico_light_tv"></span>TV</a></li>
-        <li><a title="Rede e Senha Wi-Fi" href="https://servicos.unifique.com.br/internet/wifi/" onclick="registraLog(&#39;redeSenhaWifi&#39;)"><span class="ico_light_rede"></span>Rede e Senha Wi-Fi</a></li>
-        <li><a title="Ouvidoria" href="https://servicos.unifique.com.br/ouvidoria/" onclick="registraLog(&#39;ouvidoria&#39;)"><span class="ico_light_ouvidoria"></span>Ouvidoria</a></li>
-        <li><a title="Contatos Suporte" href="https://servicos.unifique.com.br/suporte/" onclick="javascript:registraLog(&#39;suporte&#39;)"><span class="ico_light_suporte"></span>Contatos Suporte</a></li>
+        <li><a title="Cobran�as pagas" href="https://servicos.unifique.com.br/cobrancas/pagas/" onclick="registraLog(cobrancasPagas)" class="current"><span class="ico_light_cobrancas_pagas"></span>Cobrancas Pagas</a></li>
+        <li><a title="Cobran�as em aberto" href="https://servicos.unifique.com.br/cobrancas/abertas/" onclick="registraLog(cobrancasEmAberto)"><span class="ico_light_cobrancas_abertas"></span>Cobrancas em aberto</a></li>
+        <li class="disabled"><a title="Gerenciar e-mails (Plano n�o contratado)" href="https://servicos.unifique.com.br/cobrancas/pagas/#" onclick="registraLog(gerenciarEmails)"><span class="ico_light_emails"></span>Gerenciar e-mails</a></li>
+        <li class="disabled"><a title="Gerenciar dom�nios (Plano n�o contratado)" href="https://servicos.unifique.com.br/cobrancas/pagas/#" onclick="registraLog(gerenciarDominios)"><span class="ico_light_dominios"></span>Gerenciar dominios</a></li>
+        <li class="disabled"><a title="Gerenciar usu�rios de FTP (Plano n�o contratado)" href="https://servicos.unifique.com.br/cobrancas/pagas/#" onclick="registraLog(usuariosFtps)"><span class="ico_light_ftps"></span>Usuarios de FTPs</a></li>
+        <li class="disabled"><a title="Gerenciar banco de dados (Plano n�o contratado)" href="https://servicos.unifique.com.br/cobrancas/pagas/#" onclick="registraLog(bancoDeDados)"><span class="ico_light_bases"></span>Banco de dados</a></li>
+        <li><a title="Gerenciar telefonia" href="https://servicos.unifique.com.br/telefonia/" onclick="registraLog(telefonia)"><span class="ico_light_telefonia"></span>Telefonia</a></li>
+        <li><a title="Gerenciar TV" href="https://servicos.unifique.com.br/tv/" onclick="registraLog(tv)"><span class="ico_light_tv"></span>TV</a></li>
+        <li><a title="Rede e Senha Wi-Fi" href="https://servicos.unifique.com.br/internet/wifi/" onclick="registraLog(redeSenhaWifi)"><span class="ico_light_rede"></span>Rede e Senha Wi-Fi</a></li>
+        <li><a title="Ouvidoria" href="https://servicos.unifique.com.br/ouvidoria/" onclick="registraLog(ouvidoria)"><span class="ico_light_ouvidoria"></span>Ouvidoria</a></li>
+        <li><a title="Contatos Suporte" href="https://servicos.unifique.com.br/suporte/" onclick="javascript:registraLog(suporte)"><span class="ico_light_suporte"></span>Contatos Suporte</a></li>
         <li><a title="Sair" href="https://servicos.unifique.com.br/logout/"><span class="ico_light_sair"></span>Sair</a></li>
     </ul>
     <div style="clear:both;"></div>
@@ -179,9 +196,9 @@
     </script>
     <div class="container">
         <br><br>
-        <p class="title"><a href="https://servicos.unifique.com.br/cobrancas/declaracao_quitacao/VkoxQUgwcXNLVDglMkZMYyUyQlBuJTJCdDBWdyUzRCUzRA==/" target="_blank" onclick="registraLog(&#39;declaracaoQuitacao&#39;)">Declara��o de quita��o de d�bitos 2021 - Unidade Timb�</a></p>
+        <p class="title"><a href="https://servicos.unifique.com.br/cobrancas/declaracao_quitacao/VkoxQUgwcXNLVDglMkZMYyUyQlBuJTJCdDBWdyUzRCUzRA==/" target="_blank" onclick="registraLog(declaracaoQuitacao)">Declaracao de quitacao de debitos 2021 - Unidade Timbo</a></p>
         <br>
-        <p class="title">Cobran�as pagas</p>
+        <p class="title">Cobrancas pagas</p>
         <div id="accordion" class="ui-accordion ui-widget ui-helper-reset" role="tablist">
             <h3 class="ui-accordion-header ui-helper-reset ui-state-default ui-accordion-icons ui-corner-all" role="tab" id="ui-accordion-accordion-header-0" aria-controls="ui-accordion-accordion-panel-0" aria-selected="false" aria-expanded="true" tabindex="0"><span class="ui-accordion-header-icon ui-icon ui-icon-plus"></span>10/09/2022</h3>
             <div class="table-responsive ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom" id="ui-accordion-accordion-panel-0" aria-labelledby="ui-accordion-accordion-header-0" role="tabpanel" aria-hidden="true" style="display: none;">
@@ -784,7 +801,7 @@
                 </table>
             </div>
         </div>
-        <div class="alert alert-warning">Para visualizar cobran�as anteriores <a href="https://servicos.unifique.com.br/cobrancas/pagas/todas/" onclick="registraLog(&#39;cobrancasAnteriores&#39;)" class="current">clique aqui</a></div>
+        <div class="alert alert-warning">Para visualizar cobran�as anteriores <a href="https://servicos.unifique.com.br/cobrancas/pagas/todas/" onclick="registraLog(cobrancasAnteriores)" class="current">clique aqui</a></div>
     </div>
     <!-- /.container -->
 
