@@ -1,4 +1,0 @@
-* Deck of Carts - api com todas as cartas e funcoes para embaralhar
-  * https://www.deckofcardsapi.com/
-  
-  USAR A API ACIMA PARA AS CARTAS
