@@ -9,3 +9,14 @@ create table tutorial (
 -- BASE DE DADOS LOCAL
 
 -- BASE DE DADOS SUPABASE
+
+
+#BANCO DE DADOS LOCAL
+#spring.datasource.url= jdbc:postgresql://localhost:5432/postgres
+#spring.datasource.username= postgres
+#spring.datasource.password= postgres
+
+# BANCO DE DADOS ONLINE
+spring.datasource.url= jdbc:postgresql://localhost:5432/postgres
+spring.datasource.username= postgres
+spring.datasource.password= postgres
