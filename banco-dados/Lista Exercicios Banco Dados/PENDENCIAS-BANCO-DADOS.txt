@@ -4,3 +4,7 @@ assuntos faltantes
 segunda-feira-12-09- fazer exercicios banco dados
 Exercicios I, II, III,
 comandos da apostila treinaweb
+
+# CONTA SUPABASE 
+SENHA 2 PROJETO:36IOdhVvNN0cWxU5
+

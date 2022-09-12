@@ -1,0 +1,7 @@
+Copiar os arquivos abaixo:
+
+	LIBPQ.DLL
+	PHP_PGSQL.DLL
+Copiar da pasta C:\PHP\  para a pasta C:\Apache\Bin\
+
+Reiniciar o Apache
