@@ -105,15 +105,13 @@ WHERE
 	cadastros.tblogradouro.logcodigo=5;
 
 ########################################
-8. Pedro acaba de vender seu Telefone Celular, a tabela de contatos da pessoa deve ser alterada, 
+8. Pedro acaba de vender seu Telefone Celular, 
+a tabela de contatos da pessoa deve ser alterada, 
 excluindo esta informação.
 DELETE 
-FROM
-	cadastros.tbpessoacontato
-WHERE
-	cadastros.tbpessoacontato.pescodigo=2
-AND 
-	cadastros.tbpessoacontato.ctpdescricao LIKE '%Telefone Celular%';
+ FROM cadastros.tbpessoacontato
+WHERE cadastros.tbpessoacontato.pescodigo=2
+  AND cadastros.tbpessoacontato.ctpdescricao LIKE '%Telefone Celular%';
 
 
 ########################################
