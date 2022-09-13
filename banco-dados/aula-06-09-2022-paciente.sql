@@ -1,6 +1,13 @@
 select * from tbmedico 
 
--- opcao 01
+-- paciente
+CREATE TABLE public.tbpaciente (
+	paccodigo int4 NOT NULL,
+	pacnome varchar(200) NOT NULL,
+	constraint pk_tbpaciente primary key (paccodigo) 	
+);
+
+--medico
 CREATE TABLE public.tbmedico (
 	medcodigo int4 NOT NULL,
 	mednome varchar(200) NOT NULL,
