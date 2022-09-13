@@ -31,7 +31,7 @@ select
 	 end tipopessoa,
 	 case 
 		when pessexo = 1 then 'Feminino'
-		when pestipo = 2 then 'Masculino'
+		when pessexo = 2 then 'Masculino'
 		else 'Não informado'
 	 end sexo,
 	 TBPESSOA.* 
