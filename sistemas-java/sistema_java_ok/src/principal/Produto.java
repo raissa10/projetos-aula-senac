@@ -99,6 +99,7 @@ public class Produto extends Item {
     public boolean alterarProduto() {
         try {
 
+            // GRAVAR NO BANCO DE DADOS....
             StringBuilder texto = new StringBuilder();
             v = manip.ler();
 

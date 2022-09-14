@@ -1,0 +1,3 @@
+alter table usuario add column ds_login varchar(100);
+alter table usuario add column fg_ativo int;
+

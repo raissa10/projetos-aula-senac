@@ -1,0 +1,87 @@
+http://www.ime.usp.br/~pf/analise_de_algoritmos/lectures.html
+Aulas
+
+"Efficiency is an ideological concept, not an economic concept."
+
+— Noam Chomsky
+
+ 
+
+Estas aulas de análise de algoritmos foram baseadas em partes dos livros de Cormen, Leiserson, Rivest e Stein, de Kleinberg e Tardos, de Brassard e Bratley e de alguns outros.   O curso estuda alguns algoritmos clássicos e analisa sua correção e o seu desempenho.  Para preparar o terreno, as primeiras aulas tratam de duas importantes ferramentas matemáticas:  a comparação assintótica de funções e a resolução de recorrências.
+
+Embora os nossos algoritmos sejam descritos em pseudocódigo, convém que o leitor conheça a linguagem de programação C.  Também é desejável que o leitor conheça algumas estruturas de dados básicas e tenha noções de teoria dos grafos.
+Preliminares
+
+    Exercícios preliminares
+    O que é uma prova matemática?
+    Problemas, instâncias, algoritmos e tempo 
+
+Ferramentas
+
+    Análise assintótica: ordens Ο, Ω e Θ
+    Solução de recorrências
+    Recursão 
+
+Problemas e algoritmos
+
+    Análise da ordenação por inserção
+    Exemplo de análise probabilística
+    Análise da busca binária
+    Análise do algoritmo Mergesort
+    Análise do algoritmo Quicksort
+    Mediana e i-ésimo menor elemento
+    A estrutura heap
+    Análise do algoritmo Heapsort
+    Filas de prioridades
+    Segmento de soma máxima
+    Subsequência crescente máxima
+    Multiplicação de números naturais (algoritmo de Karatsuba e Ofman)
+    Escalonamento de intervalos
+    O problema subset-sum
+    O problema da mochila booleana
+    O problema da mochila fracionária
+    Um algoritmo de aproximação para o problema da mochila booleana
+    Códigos de Huffman
+    Busca de uma palavra em um texto
+    Tabelas dinâmicas
+    Digrafos
+    Território de um vértice
+    Busca em largura
+    Busca em profundidade
+    Distâncias
+    Distâncias com pesos (algoritmo de Dijkstra)
+    Digrafos munidos de enumeração topológica
+    Ciclos e digrafos acíclicos
+    Digrafos acíclicos e enumeração topológica
+    Componentes fortes (algoritmo de Kosaraju)
+    Ciclos e cortes orientados
+    Arborescências
+    Arborescências maximais de digrafos
+    Digrafos simétricos
+    Arborescências de peso mínimo em digrafos simétricos (algoritmo de Prim)
+    Algoritmo probabilístico para corte mínimo (algoritmo de Karger) 
+
+Síntese de algoritmos
+
+    Divisão e conquista
+    Programação dinâmica
+    Algoritmos gulosos
+    Tempo amortizado 
+
+Complexidade
+
+    Problemas NP-completos NOVO! 
+
+Dicionário e índice
+
+    Dicionário
+    Índice remissivo 
+
+Críticas e sugestões são bem-vindas.
+
+URL of this site: http://www.ime.usp.br/~pf/analise_de_algoritmos/
+Last modified: Mon Nov 3 07:20:20 BRST 2014
+Paulo Feofiloff
+Departamento de Ciência da Computação
+Instituto de Matemática e Estatística da USP
+

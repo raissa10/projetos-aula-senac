@@ -1,0 +1,31 @@
+Tipos de XML da NFE
+
+    XML com
+Tipo 1
+    ->Empresa 
+    ->Produto
+    ->Sem Impostos
+    ->Sem Frete
+    ->Tipo de Emissão-> Venda para pessoa Física
+->Mesclar os tipos abaixo
+Tipo 2
+    ->Empresa 
+    ->Produto
+    ->Sem Impostos
+    ->Com Frete
+    ->Tipo de Emissão-> Venda para pessoa Física
+
+Tipo 3
+    ->Empresa 
+    ->Produto
+    ->Sem Impostos
+    ->Sem Frete
+    ->Tipo de Emissão-> Venda para pessoa Física
+
+Tipo 4
+    ->Empresa 
+    ->Produto
+    ->Sem Impostos
+    ->Sem Frete
+    ->Tipo de Emissão-> Venda para pessoa Física
+        

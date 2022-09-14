@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nfeProc xmlns:xml="http://www.w3.org/XML/1998/namespace" versao="2.0">
+    <NFe xmlns="">
+        <infNFe>
+            <
+            <nro />
+        
+        </total>
+        <transp>
+            <modFrete></modFrete>
+        </transp>
+        <cobr>
+            <fat>
+                <nFat></nFat>
+                <vOrig></vOrig>
+            </fat>
+            <dup>
+                <nDup></nDup>
+                <dVenc></dVenc>
+                <vDup></vDup>
+            </dup>
+        </cobr>
+        <infAdic>
+            <infCpl>"DOCUMENTO EMITIDO POR ME OPTANTE PELO SIMPLES NACIONAL NAO GERA DIREITO A CREDITO FISCAL DE ISS E IPI Valor Aproximado do Imposto R$2.827,50 (37,7%) Fonte: IBPT</infCpl>
+        </infAdic>
+        </infNFe>
+        <Signature>
+            <SignedInfo>
+                <CanonicalizationMethod></CanonicalizationMethod>
+                <SignatureMethod></SignatureMethod>
+                <Reference>
+                    <Transforms>-DEVE TER UM ITERADOR!<Transform>Transform1-DEVE TER UM ITERADOR!</Transform></Transforms>
+                    <DigestMethod></DigestMethod>
+                    <DigestValue>resl0EWzbkhrY5fCtL38DaOlfLY=</DigestValue>
+                </Reference>
+            </SignedInfo>
+            <SignatureValue>SynKm8xh/ftfdDlRL3M6lIY4n3s9GlyDsXiaLmUtuUghqze5ctaMzPqNHy33crpPuM+VDF/N/YHXA587Kih4PAR0rVtErdWN8snR4e/jjeo2nSqE4d9vmE66AOUezbxkt/gE7fVMIvsR6DlgA1eO0SNaURPLhw3S1uxFQ6FbI6M7ON3PCB4BjPV6i2Dh/lBej4AM1qSni9/cSx35yqWZ5QXazEGb2EnPeruVxqzrPKNzIdXUqUhe/rsxcM79yd71rCN6PMMCm6nZd84IoLCxJLSAp/l9rE/CzAS5snpl00mREeQiti7VZ1+hOfc4Vj9M4WW+3p3rgG98/o3XB2Dc5Q==</SignatureValue>
+            <KeyInfo>
+                <X509Data>
+                    <X509Certificate>MIIIRTCCBi2gAwIBAgIQewCd7TUgBZDN2LHEd/zYNjANBgkqhkiG9w0BAQsFADB4MQswCQYDVQQGEwJCUjETMBEGA1UEChMKSUNQLUJyYXNpbDE2MDQGA1UECxMtU2VjcmV0YXJpYSBkYSBSZWNlaXRhIEZlZGVyYWwgZG8gQnJhc2lsIC0gUkZCMRwwGgYDVQQDExNBQyBDZXJ0aXNpZ24gUkZCIEc0MB4XDTEzMDgyNzAwMDAwMFoXDTE0MDgyNjIzNTk1OVowgewxCzAJBgNVBAYTAkJSMRMwEQYDVQQKFApJQ1AtQnJhc2lsMQswCQYDVQQIEwJTQzETMBEGA1UEBxQKUklPIERPIFNVTDE2MDQGA1UECxQtU2VjcmV0YXJpYSBkYSBSZWNlaXRhIEZlZGVyYWwgZG8gQnJhc2lsIC0gUkZCMRYwFAYDVQQLFA1SRkIgZS1DTlBKIEExMSIwIAYDVQQLFBlBdXRlbnRpY2FkbyBwb3IgQVIgRmFjaXNjMTIwMAYDVQQDEylNQVhJIERJU1RSSUJVSURPUkEgTFREQSBNRTowMTYzMzM1OTAwMDE2OTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAINSl9PDjSKckuYYtNb5cdE33xO61rdzNSX0ecyxSHf6oA3jFYZvblxg6LkoK69DyIDpWk+eaKRwFlnWpGp088NsSajK0xhZ+lHWCvOa4DPiWhvQ1vz9wadWeWtTY2/Q6vcGbjkhu+yoxoopISZo8YrADJT7uS1epdS1EtIOORmZhTsk61Xfy3eJ2pPA30AMb129/SfgmnDBeR1seHLg1v/so62PtMUxpFwZPUksDYhGdGgjQWA4TX0R/Ig8e5JpHAQCDOAjlqDPLPJ/pUIRdmMGnozZ0PY78SRGX3naIUad4NUZsL0zBJKkVUSIefcYiCP02x5bKAFp1EbAOoADmrsCAwEAAaOCA1QwggNQMIG5BgNVHREEgbEwga6gPQYFYEwBAwSgNAQyMzAwNjE5Njk1NzY1MTg1MDk2MzExNDU2MDcxNDk2MDAwMDAwMDAxODkwNDA0U1NQU0OgIQYFYEwBAwKgGAQWTUFSSUxFVVNBIEJBVElTVEEgWkFHT6AZBgVgTAEDA6AQBA4wMTYzMzM1OTAwMDE2OaAXBgVgTAEDB6AOBAwwMDAwMDAwMDAwMDCBFm1pY2hlbGVAc2NodWxsZS5jbnQuYnIwCQYDVR0TBAIwADAfBgNVHSMEGDAWgBQukerWbeWyWYLcOIUpdjQWVjzQPjAOBgNVHQ8BAf8EBAMCBeAwfwYDVR0gBHgwdjB0BgZgTAECAQwwajBoBggrBgEFBQcCARZcaHR0cDovL2ljcC1icmFzaWwuY2VydGlzaWduLmNvbS5ici9yZXBvc2l0b3Jpby9kcGMvQUNfQ2VydGlzaWduX1JGQi9EUENfQUNfQ2VydGlzaWduX1JGQi5wZGYwggEWBgNVHR8EggENMIIBCTBXoFWgU4ZRaHR0cDovL2ljcC1icmFzaWwuY2VydGlzaWduLmNvbS5ici9yZXBvc2l0b3Jpby9sY3IvQUNDZXJ0aXNpZ25SRkJHNC9MYXRlc3RDUkwuY3JsMFagVKBShlBodHRwOi8vaWNwLWJyYXNpbC5vdXRyYWxjci5jb20uYnIvcmVwb3NpdG9yaW8vbGNyL0FDQ2VydGlzaWduUkZCRzQvTGF0ZXN0Q1JMLmNybDBWoFSgUoZQaHR0cDovL3JlcG9zaXRvcmlvLmljcGJyYXNpbC5nb3YuYnIvbGNyL0NlcnRpc2lnbi9BQ0NlcnRpc2lnblJGQkc0L0xhdGVzdENSTC5jcmwwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsGAQUFBwMEMIGbBggrBgEFBQcBAQSBjjCBizBfBggrBgEFBQcwAoZTaHR0cDovL2ljcC1icmFzaWwuY2VydGlzaWduLmNvbS5ici9yZXBvc2l0b3Jpby9jZXJ0aWZpY2Fkb3MvQUNfQ2VydGlzaWduX1JGQl9HNC5wN2MwKAYIKwYBBQUHMAGGHGh0dHA6Ly9vY3NwLmNlcnRpc2lnbi5jb20uYnIwDQYJKoZIhvcNAQELBQADggIBABVAisyWa92iA2BtMa/HiQvUSbXdGRuCwH3B7dd2UunZtSRRgyHDv1CRtnGgKB7Hn7Yj8TXazH8/LnZbYrpdYXeqRm6V6yH77KSN/mRd26cuvFha08E8j4iDi04VGnk9BmTKRq8oJGl0ubBnV5RTMJfs3CaP0oITKWLA31BMSauayF2BYyx8PLjgkHcR7iov9SN95Ftg69jUP6Xirsjj3V3TQoq5zF0QwE+XT7IyOoVWWJap+0+sRIF83VdrnR7u4ZT1YjAYc/ljbnvhKYC/hNhbM9iV57kieU1ppgJKfxNV/jcXTfx+twl5A2bOWu42TM52tqGnymo7n4jTpFk/Ve5GldG7ztlIJa9qrLWaOK8S9/MPHvC7ZF305TiaU6GyFR7JA7pQjCf/yC5P9jJTNopVl40B3kfZuLrLIUVxTNCj+c/o/5D2KfnHapTPXbZF43vm0MyonW6FW0OrsSUBImAbnbxna1MU6Tf+YSCwiC4sQTJX8h/om1BrOTPzVkc0C53il6+Kt4ndqmU9TSRjhgDP9mhDhVMIoxnDcxbCChNfzeKmVFH0a55nu4d5UIZtrXzaTiazklLuOVnAWuBOwojXR3DgBoiJM09DPwb/pXyZytmjbwRLIz1RhEeDYRKjmjDEkIiKBROhUStNWOgL8KIreiI0jEU4tZ57j0AaAxc3</X509Certificate>
+                </X509Data>
+            </KeyInfo>
+        </Signature>
+    </NFe>
+    <protNFe>
+        <infProt>
+            <tpAmb>1</tpAmb>
+            <verAplic>SVRS20131104142903</verAplic>
+            <chNFe>42131101633359000169550010000002721100035982</chNFe>
+            <dhRecbto>2013-11-19T17:53:34</dhRecbto>
+            <nProt>342130125013028</nProt>
+            <digVal>resl0EWzbkhrY5fCtL38DaOlfLY=</digVal>
+            <cStat>100</cStat>
+            <xMotivo>Autorizado o uso da NF-e</xMotivo>
+        </infProt>
+    </protNFe>
+</nfeProc>

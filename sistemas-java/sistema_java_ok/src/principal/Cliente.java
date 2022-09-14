@@ -35,6 +35,7 @@ public class Cliente extends Pessoa {
 
     public boolean gravarCliente() {
         try {
+            // GRAVAR NO BANCO DE DADOS....
             StringBuilder texto = new StringBuilder();
 
             texto.append(super.toString());
@@ -202,6 +203,7 @@ public class Cliente extends Pessoa {
 
     public Vector<String> retornaClientes() {
         try {
+            // LISTAR DO BANCO DE DADOS
             v = manip.ler();
 
             return v;
