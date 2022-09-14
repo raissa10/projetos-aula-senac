@@ -1,5 +1,7 @@
 
-package principal.conexao;
+package principal;
+
+import principal.Conexao;
 
 /**
  *

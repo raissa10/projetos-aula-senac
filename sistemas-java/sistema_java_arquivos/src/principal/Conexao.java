@@ -1,4 +1,4 @@
-package principal.conexao;
+package principal;
 
 import java.sql.*;
 import javax.swing.JOptionPane;
