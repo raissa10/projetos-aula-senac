@@ -1,5 +1,5 @@
 /*
-1 - conferir listas exercicios
+1 - conferir listas exercicios - teste
 
 Leandro - nao fez a lista 1 e a lista 2 e a lista 3
 
