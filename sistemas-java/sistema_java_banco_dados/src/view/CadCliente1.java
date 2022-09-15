@@ -9,20 +9,17 @@ import model.Venda;
  *
  * @author Gelvazio Camargo
  */
-public class CadCliente extends javax.swing.JFrame {
+public class CadCliente1 extends javax.swing.JFrame {
 
     Cliente cli = new Cliente();
     Venda ven = new Venda();
     validaCPF val = new validaCPF();
     consultaClientes cons = new consultaClientes(this, true);
 
-    // Banco Dados
-    ClienteDB estadodb = new ClienteDB();
-
-    public CadCliente() {
+    public CadCliente1() {
         initComponents();
         this.setLocationRelativeTo(null);
-        edtCodigo.requestFocus();
+        jTextField2.requestFocus();
     }
 
     /**
@@ -40,10 +37,10 @@ public class CadCliente extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
-        edtCodigo = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
-        btnGravar = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
@@ -91,17 +88,17 @@ public class CadCliente extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 410, -1));
 
-        edtCodigo.addActionListener(new java.awt.event.ActionListener() {
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                edtCodigoActionPerformed(evt);
+                jTextField2ActionPerformed(evt);
             }
         });
-        edtCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
+        jTextField2.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                edtCodigoKeyPressed(evt);
+                jTextField2KeyPressed(evt);
             }
         });
-        getContentPane().add(edtCodigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 80, -1));
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, 80, -1));
 
         jTextField3.setEnabled(false);
         jTextField3.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -119,15 +116,15 @@ public class CadCliente extends javax.swing.JFrame {
         });
         getContentPane().add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 410, -1));
 
-        btnGravar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Knob Valid Green.png"))); // NOI18N
-        btnGravar.setText("Gravar");
-        btnGravar.setEnabled(false);
-        btnGravar.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Knob Valid Green.png"))); // NOI18N
+        jButton2.setText("Gravar");
+        jButton2.setEnabled(false);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGravarActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnGravar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 130, 40));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 140, 130, 40));
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Knob Remove Red.png"))); // NOI18N
         jButton3.setText("Excluir");
@@ -183,72 +180,21 @@ public class CadCliente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        // Novo via banco de dados
-        String auxTexto = edtCodigo.getText();
-        if (clientedb.getCliente(auxTexto)) {
-            alterarRegistro();
-        } else {
-            gravarRegistro();
-        }
+        if (cli.GravarAlterar(Integer.parseInt(jTextField2.getText()), jTextField3.getText(),
+                jTextField4.getText(), jTextField1.getText())) {
 
-        // forma atual com arquivo texto
-//        if (cli.GravarAlterar(Integer.parseInt(edtCodigo.getText()), jTextField3.getText(),
-//                jTextField4.getText(), jTextField1.getText())) {
-//
-//            JOptionPane.showMessageDialog(null, "Cliente gravado/alterado com sucesso!");
-//            limpaCampos();
-//            habilitaCampos(false);
-//            edtCodigo.requestFocus();
-//        }
-    }//GEN-LAST:event_btnGravarActionPerformed
-
-    private void alterarRegistro() {
-        String auxCd_estado = edtSigla.getText().toUpperCase();
-        String auxDs_estado = edtDescricao.getText();
-        int auxCd_ibge = Integer.parseInt(edtIbge.getText());
-        //Sera implementado depois
-        int auxcd_usuario = 1;
-        int auxcd_filial = 1;
-        Estado estado = new Estado(
-                auxCd_estado,
-                auxDs_estado,
-                auxCd_ibge,
-                auxcd_filial,
-                auxcd_usuario);
-        if (estadodb.alterarEstado(estado)) {
-            JOptionPane.showMessageDialog(null, "Registro alterado com sucesso!");
+            JOptionPane.showMessageDialog(null, "Cliente gravado/alterado com sucesso!");
+            limpaCampos();
             habilitaCampos(false);
-        } else {
-            JOptionPane.showMessageDialog(null, "NÃ£o foi possÃ­vel alterar o registro!");
+            jTextField2.requestFocus();
         }
-    }
 
-    private void gravarRegistro() {
-        String auxCd_estado = edtSigla.getText().toUpperCase();
-        String auxDs_estado = edtDescricao.getText();
-        int auxCd_ibge = Integer.parseInt(edtIbge.getText());
-        //Sera implementado depois
-        int auxcd_usuario = 1;
-        int auxcd_filial = 1;
-        Estado estado = new Estado(
-                auxCd_estado,
-                auxDs_estado,
-                auxCd_ibge,
-                auxcd_filial,
-                auxcd_usuario);
-        if (estadodb.inserirEstado(estado)) {
-            JOptionPane.showMessageDialog(null, "Registro incluÃ­do com sucesso!");
-            habilitaCampos(false);
-        } else {
-            JOptionPane.showMessageDialog(null, "NÃ£o foi possÃ­vel incluir o registro!");
-            edtSigla.grabFocus();
-        }
-    }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        cli.setCodigo(Integer.parseInt(edtCodigo.getText()));
+        cli.setCodigo(Integer.parseInt(jTextField2.getText()));
 
         if (ven.procurarClienteNaVenda(cli.getCodigo())) {
             JOptionPane.showMessageDialog(null, "Cliente já foi utilizado na venda, não pode ser excluído!");
@@ -257,20 +203,20 @@ public class CadCliente extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Cliente excluído com sucesso!");
                 limpaCampos();
                 habilitaCampos(false);
-                edtCodigo.requestFocus();
+                jTextField2.requestFocus();
             }
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void edtCodigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtCodigoKeyPressed
+    private void jTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyPressed
         if ((evt.getKeyCode() == KeyEvent.VK_ENTER) || (evt.getKeyCode() == KeyEvent.VK_TAB)) {
-            if (edtCodigo.getText().equals("")) {
-                edtCodigo.setText(String.valueOf(cli.retornaUltimo()));
+            if (jTextField2.getText().equals("")) {
+                jTextField2.setText(String.valueOf(cli.retornaUltimo()));
                 habilitaCampos(true);
                 jTextField3.requestFocus();
                 cli.setAlteracao(false);
             } else {
-                cli.setCodigo(Integer.parseInt(edtCodigo.getText()));
+                cli.setCodigo(Integer.parseInt(jTextField2.getText()));
 
                 if (cli.procurarCliente()) {
                     jTextField1.setText(cli.getEndereco());
@@ -285,11 +231,11 @@ public class CadCliente extends javax.swing.JFrame {
                     cli.setAlteracao(false);
                     JOptionPane.showMessageDialog(null, "Cliente não existe!");
                     habilitaCampos(false);
-                    edtCodigo.requestFocus();
+                    jTextField2.requestFocus();
                 }
             }
         }
-    }//GEN-LAST:event_edtCodigoKeyPressed
+    }//GEN-LAST:event_jTextField2KeyPressed
 
     private void jTextField3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
@@ -321,13 +267,13 @@ public class CadCliente extends javax.swing.JFrame {
                     JOptionPane.QUESTION_MESSAGE, null, opcoes, opcoes[0]);
 
             if (resposta == 0) {
-                if (cli.GravarAlterar(Integer.parseInt(edtCodigo.getText()), jTextField3.getText(),
+                if (cli.GravarAlterar(Integer.parseInt(jTextField2.getText()), jTextField3.getText(),
                         jTextField4.getText(), jTextField1.getText())) {
 
                     JOptionPane.showMessageDialog(null, "Cliente gravado/alterado com sucesso!");
                     limpaCampos();
                     habilitaCampos(false);
-                    edtCodigo.requestFocus();
+                    jTextField2.requestFocus();
                 }
             }
         }
@@ -337,20 +283,20 @@ public class CadCliente extends javax.swing.JFrame {
 
     }//GEN-LAST:event_formWindowClosing
 
-    private void edtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_edtCodigoActionPerformed
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
 
-    }//GEN-LAST:event_edtCodigoActionPerformed
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
         limpaCampos();
         habilitaCampos(false);
-        edtCodigo.requestFocus();
+        jTextField2.requestFocus();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
 
-        edtCodigo.setText(String.valueOf(cli.retornaUltimo()));
+        jTextField2.setText(String.valueOf(cli.retornaUltimo()));
         habilitaCampos(true);
         jTextField3.requestFocus();
     }//GEN-LAST:event_jButton6ActionPerformed
@@ -358,8 +304,8 @@ public class CadCliente extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
 
         cons.setVisible(true);
-        edtCodigo.setText(String.valueOf(cons.codigo));
-        edtCodigo.requestFocus();
+        jTextField2.setText(String.valueOf(cons.codigo));
+        jTextField2.requestFocus();
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -384,21 +330,23 @@ public class CadCliente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadCliente1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadCliente1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadCliente1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadCliente1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadCliente().setVisible(true);
+                new CadCliente1().setVisible(true);
             }
         });
     }
@@ -407,11 +355,11 @@ public class CadCliente extends javax.swing.JFrame {
         jTextField1.setEnabled(habilita);
         jTextField3.setEnabled(habilita);
         jTextField4.setEnabled(habilita);
-        btnGravar.setEnabled(habilita);
+        jButton2.setEnabled(habilita);
         jButton3.setEnabled(habilita);
         jButton4.setEnabled(habilita);
 
-        edtCodigo.setEnabled(!habilita);
+        jTextField2.setEnabled(!habilita);
         jButton5.setEnabled(!habilita);
         jButton6.setEnabled(!habilita);
         jButton1.setEnabled(!habilita);
@@ -419,14 +367,13 @@ public class CadCliente extends javax.swing.JFrame {
 
     public void limpaCampos() {
         jTextField1.setText("");
-        edtCodigo.setText("");
+        jTextField2.setText("");
         jTextField3.setText("");
         jTextField4.setText("");
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnGravar;
-    private javax.swing.JTextField edtCodigo;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -441,6 +388,7 @@ public class CadCliente extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables

@@ -2,7 +2,6 @@ package View;
 
 import ControleCadastro.EstadoDB;
 import ModelCadastro.Estado;
-import VisaoConsultasCadastro.ConsultaEstado;
 import Principal.Conexao;
 import Principal.MetodosGlobais;
 import java.awt.event.KeyEvent;
@@ -363,7 +362,7 @@ public class CadEstado extends MetodosGlobais {
     }// </editor-fold>//GEN-END:initComponents
 
     private void edtSiglaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtSiglaKeyPressed
-        
+
         String auxTexto = edtSigla.getText();
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             if (auxTexto.equals("")) {
@@ -376,21 +375,21 @@ public class CadEstado extends MetodosGlobais {
     }//GEN-LAST:event_edtSiglaKeyPressed
 
     private void edtDescricaoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtDescricaoKeyPressed
-        
+
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             edtIbge.grabFocus();
         }
     }//GEN-LAST:event_edtDescricaoKeyPressed
 
     private void edtIbgeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtIbgeKeyPressed
-        
+
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btnGravar.grabFocus();
         }
     }//GEN-LAST:event_edtIbgeKeyPressed
 
     private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
-        
+
         dispose();
     }//GEN-LAST:event_btnSairActionPerformed
 
@@ -402,26 +401,26 @@ public class CadEstado extends MetodosGlobais {
     }//GEN-LAST:event_btnConsultaActionPerformed
 
     private void btnConsultaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnConsultaKeyPressed
-        
+
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btnSair.grabFocus();
         }
     }//GEN-LAST:event_btnConsultaKeyPressed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
-        
+
         Excluir_Registro();
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     private void btnExcluirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnExcluirKeyPressed
-        
+
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btnConsulta.grabFocus();
         }
     }//GEN-LAST:event_btnExcluirKeyPressed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        
+
         int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente Cancelar a Edição?");
         if (resposta == JOptionPane.YES_OPTION) {
             habilitaCampos(false);
@@ -429,14 +428,14 @@ public class CadEstado extends MetodosGlobais {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnCancelarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnCancelarKeyPressed
-        
+
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btnExcluir.grabFocus();
         }
     }//GEN-LAST:event_btnCancelarKeyPressed
 
     private void btnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGravarActionPerformed
-        
+
         int resposta = JOptionPane.showConfirmDialog(null, "Deseja realmente gravar o registro?");
         if (resposta == JOptionPane.YES_OPTION) {
             Gravar_Completo_Validado();
@@ -444,14 +443,14 @@ public class CadEstado extends MetodosGlobais {
     }//GEN-LAST:event_btnGravarActionPerformed
 
     private void btnGravarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnGravarKeyPressed
-        
+
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             btnCancelar.grabFocus();
         }
     }//GEN-LAST:event_btnGravarKeyPressed
 
     private void edtIbge1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_edtIbge1KeyPressed
-        
+
     }//GEN-LAST:event_edtIbge1KeyPressed
 
     /**

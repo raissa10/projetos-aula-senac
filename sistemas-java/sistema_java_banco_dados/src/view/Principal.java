@@ -6,10 +6,10 @@ package view;
  */
 public class Principal extends javax.swing.JFrame {
 
-    CadCliente cli    = new CadCliente();
+    CadCliente cli   = new CadCliente();
     CadVendedor vend = new CadVendedor();
-    CadProduto pro    = new CadProduto();
-    CadVenda ven       = new CadVenda();
+    CadProduto pro   = new CadProduto();
+    CadVenda ven     = new CadVenda();
 
     public Principal() {
         initComponents();

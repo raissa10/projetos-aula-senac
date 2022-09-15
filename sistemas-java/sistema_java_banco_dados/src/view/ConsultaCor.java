@@ -1,8 +1,5 @@
-package VisaoConsultasCadastro;
+package view;
 
-import ModelCadastro.Cor;
-import Principal.Conexao;
-import Principal.MetodosGlobais;
 import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -36,7 +33,7 @@ public class ConsultaCor extends MetodosGlobais {
             modelo.addElement(auxCodigo);
             modelo.addElement(auxNome);
         } catch (Exception erro) {
-            JOptionPane.showMessageDialog(null, "Erro no Método getComboCampo(): \n" + erro.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro no MÃ©todo getComboCampo(): \n" + erro.getMessage());
         } finally {
             return modelo;
         }
@@ -60,7 +57,7 @@ public class ConsultaCor extends MetodosGlobais {
             modelo.addElement(auxMenorIgual);
             modelo.addElement(auxDiferente);
         } catch (Exception erro) {
-            JOptionPane.showMessageDialog(null, "Erro no Método getComboValor(): \n" + erro.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro no MÃ©todo getComboValor(): \n" + erro.getMessage());
         } finally {
             return modelo;
         }
@@ -70,7 +67,7 @@ public class ConsultaCor extends MetodosGlobais {
         String auxedtPesquisa = null;
         String auxCampo = cbCampo.getSelectedItem().toString();
         String auxValor = cbValor.getSelectedItem().toString();
-        //Programação do SQL do Codigo
+        //ProgramaÃ§Ã£o do SQL do Codigo
         if ((auxCampo.equals("Codigo")) & (auxValor.equals("Igual"))) {
             auxCampo = "cd_cor";
             auxedtPesquisa = edtPesquisa.getText();
@@ -105,7 +102,7 @@ public class ConsultaCor extends MetodosGlobais {
         //######################################################################################################
         //######################################################################################################
         //######################################################################################################
-        //Programação do SQL do Nome
+        //ProgramaÃ§Ã£o do SQL do Nome
         if ((auxCampo.equals("Nome")) & (auxValor.equals("Igual"))) {
             auxCampo = "ds_cor";
             auxedtPesquisa = edtPesquisa.getText();
@@ -150,19 +147,19 @@ public class ConsultaCor extends MetodosGlobais {
 
     public void ValidaCampoPesquisa() {
         //JOptionPane.showMessageDialog(null, "Precisa Fazer Validacao de deixar digitar so numero qdo for o Codigo!!");
-        //Nesta parte é feita a Validação do Edit  edtPesquisa, para que caso seja nulo de uma MSG.
+        //Nesta parte Ã© feita a ValidaÃ§Ã£o do Edit  edtPesquisa, para que caso seja nulo de uma MSG.
         String auxedtPesquisa = edtPesquisa.getText();
         if (auxedtPesquisa.equals("")) {
             JOptionPane.showMessageDialog(null, "Favor Digitar algum valor ou caractere no campo Pesquisa!");
             edtPesquisa.grabFocus();
         } else {
-            //Não estando Nulo o campo é chamado o Metodo abaixo que é o responsavel pela pesquisa Compelta da Tela.
+            //NÃ£o estando Nulo o campo Ã© chamado o Metodo abaixo que Ã© o responsavel pela pesquisa Compelta da Tela.
             ListaCores();
         }
     }
 
     public ArrayList SQLConsultagetTodosCompleto() {
-        //Aqui é chamado o Metodo "PegaValorCamposComboboxCampo_E_Valor("");" para pegar os valores da tela
+        //Aqui Ã© chamado o Metodo "PegaValorCamposComboboxCampo_E_Valor("");" para pegar os valores da tela
         //Caso nao seja repassado ele nao da certo pois nao pega nada do edtPesquisa
         PegaValorCamposComboboxCampo_E_Valor("");
         ArrayList listaCor = new ArrayList();
@@ -172,7 +169,7 @@ public class ConsultaCor extends MetodosGlobais {
         try {
             conn = Conexao.getConexao();
             stmt = conn.createStatement();
-            //Nessa Parte é passado po parametro os Dados da Variavel "SQLConsulta_Usuario" que contem o sql da pesquisa.
+            //Nessa Parte Ã© passado po parametro os Dados da Variavel "SQLConsulta_Usuario" que contem o sql da pesquisa.
             rs = stmt.executeQuery(SQLConsultaCores);
             while (rs.next()) {
                 int auxcd_cor = rs.getInt("cd_cor");
@@ -198,7 +195,7 @@ public class ConsultaCor extends MetodosGlobais {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Codigo");
         modelo.addColumn("Nome");
-        //Nesta Parte o ArrayList dos Usuarios(Que chama a Classe Usuario) 
+        //Nesta Parte o ArrayList dos Usuarios(Que chama a Classe Usuario)
         //recebe por parametro o Metodo "SQLConsultagetTodos_Completo()" que tera os dados da pesquisa
         //Este Metodo Chama o ArrayList  que tera os dados e passa para a DefaultTableModel
         ArrayList<Cor> cores = SQLConsultagetTodosCompleto();
@@ -220,9 +217,9 @@ public class ConsultaCor extends MetodosGlobais {
     }
 
     /**
-     * Este método é chamado de dentro do construtor para inicializar o
-     * formulário.    ATENÇÃO: Não modifique o código. O conteúdo deste método é
-     * sempre     regenerados pelo editor de formulários.
+     * Este mÃ©todo Ã© chamado de dentro do construtor para inicializar o
+     * formulÃ¡rio. Â Â  ATENÃ‡ÃƒO: NÃ£o modifique o cÃ³digo. O conteÃºdo deste mÃ©todo Ã©
+     * sempre Â Â Â  regenerados pelo editor de formulÃ¡rios.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents

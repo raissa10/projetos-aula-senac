@@ -1,4 +1,4 @@
-package VisaoConsultasCadastro;
+package view;
 
 import ControleCadastro.EstadoDB;
 import ModelCadastro.Estado;
@@ -37,7 +37,7 @@ public class ConsultaEstado extends MetodosGlobais {
             modelo.addElement(auxSigla);
             modelo.addElement(auxNome);
         } catch (Exception erro) {
-            JOptionPane.showMessageDialog(null, "Erro no Método getComboCampo(): \n" + erro.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro no MÃ©todo getComboCampo(): \n" + erro.getMessage());
         } finally {
             return modelo;
         }
@@ -61,7 +61,7 @@ public class ConsultaEstado extends MetodosGlobais {
             modelo.addElement(auxMenorIgual);
             modelo.addElement(auxDiferente);
         } catch (Exception erro) {
-            JOptionPane.showMessageDialog(null, "Erro no Método getComboValor(): \n" + erro.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro no MÃ©todo getComboValor(): \n" + erro.getMessage());
         } finally {
             return modelo;
         }
@@ -71,7 +71,7 @@ public class ConsultaEstado extends MetodosGlobais {
         String auxedtPesquisa = null;
         String auxCampo = cbCampo.getSelectedItem().toString();
         String auxValor = cbValor.getSelectedItem().toString();
-        //Programação do SQL da Sigla
+        //ProgramaÃ§Ã£o do SQL da Sigla
         if ((auxCampo.equals("Sigla")) & (auxValor.equals("Igual"))) {
             auxCampo = "cd_estado";
             auxedtPesquisa = edtPesquisa.getText();
@@ -140,13 +140,13 @@ public class ConsultaEstado extends MetodosGlobais {
 
     public void ValidaCampoPesquisa() {
         //JOptionPane.showMessageDialog(null, "Precisa Fazer Validacao de deixar digitar so numero qdo for o Codigo!!");
-        //Nesta parte é feita a Validação do Edit  edtPesquisa, para que caso seja nulo de uma MSG.
+        //Nesta parte Ã© feita a ValidaÃ§Ã£o do Edit  edtPesquisa, para que caso seja nulo de uma MSG.
         String auxedtPesquisa = edtPesquisa.getText();
         if (auxedtPesquisa.equals("")) {
             JOptionPane.showMessageDialog(null, "Favor Digitar algum valor ou caractere no campo Pesquisa!");
             edtPesquisa.grabFocus();
         } else {
-            //Não estando Nulo o campo é chamado o Metodo abaixo que é o responsavel pela pesquisa Compelta da Tela.
+            //NÃ£o estando Nulo o campo Ã© chamado o Metodo abaixo que Ã© o responsavel pela pesquisa Compelta da Tela.
             ListaUsuariosParametrosCompleto();
         }
     }
@@ -156,7 +156,7 @@ public class ConsultaEstado extends MetodosGlobais {
     }
 
     public ArrayList SQLConsultagetTodos_Completo() {
-        //Aqui é chamado o Metodo "PegaValorCamposComboboxCampo_E_Valor("");" para pegar os valores da tela
+        //Aqui Ã© chamado o Metodo "PegaValorCamposComboboxCampo_E_Valor("");" para pegar os valores da tela
         //Caso nao seja repassado ele nao da certo pois nao pega nada do edtPesquisa
         PegaValorCamposComboboxCampo_E_Valor("");
         ArrayList listaEstado = new ArrayList();
@@ -166,7 +166,7 @@ public class ConsultaEstado extends MetodosGlobais {
         try {
             conn = Conexao.getConexao();
             stmt = conn.createStatement();
-            //Nessa Parte é passado po parametro os Dados da Variavel "SQLConsulta_Estado" que contem o sql da pesquisa.
+            //Nessa Parte Ã© passado po parametro os Dados da Variavel "SQLConsulta_Estado" que contem o sql da pesquisa.
             rs = stmt.executeQuery(SQLConsulta_Estado);
             while (rs.next()) {
                 String auxCd_estado = rs.getString("cd_estado");
@@ -193,7 +193,7 @@ public class ConsultaEstado extends MetodosGlobais {
     public void ListaTodosEstados() {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Sigla");
-        modelo.addColumn("Descrição");
+        modelo.addColumn("DescriÃ§Ã£o");
         modelo.addColumn("Codigo IBGE");
         EstadoDB estadodb = new EstadoDB();
         ArrayList<Estado> estados = estadodb.getTodos();
@@ -212,7 +212,7 @@ public class ConsultaEstado extends MetodosGlobais {
         //Este Metodo Chama o ArrayList  que tera os dados e passa para a DefaultTableModel
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Sigla");
-        modelo.addColumn("Descrição");
+        modelo.addColumn("DescriÃ§Ã£o");
         modelo.addColumn("Codigo IBGE");
         ArrayList<Estado> estados = SQLConsultagetTodos_Completo();
         for (Estado auxEstado : estados) {
@@ -235,9 +235,9 @@ public class ConsultaEstado extends MetodosGlobais {
     }
 
     /**
-     * Este método é chamado de dentro do construtor para inicializar o
-     * formulário.    ATENÇÃO: Não modifique o código. O conteúdo deste método é
-     * sempre     regenerados pelo editor de formulários.
+     * Este mÃ©todo Ã© chamado de dentro do construtor para inicializar o
+     * formulÃ¡rio. Â Â  ATENÃ‡ÃƒO: NÃ£o modifique o cÃ³digo. O conteÃºdo deste mÃ©todo Ã©
+     * sempre Â Â Â  regenerados pelo editor de formulÃ¡rios.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
