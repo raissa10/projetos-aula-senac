@@ -1,9 +1,9 @@
 /*
-1 - conferir listas exercicios - teste
+1 -  conferir listas exercicios
 
-Leandro - nao fez a lista 1 e a lista 2 e a lista 3
+Leandro - ok - nao fez a lista 1 e a lista 2 e a lista 3
 
-Carlos e Eduardo nao fizeram tudo a lista 2
+Carlos e Eduardo - ok nao fizeram tudo a lista 2
 
 Amanda - Nao fez nenhum exercicio ainda
 
@@ -50,15 +50,15 @@ select tbmedico.medcodigo as codigo,
   from tbmedico
   where 1 = 1
   -- clausula and
-    --and mednome ilike '%mau%'
+    -- and mednome ilike '%mau%'
     --and medespecialidade ilike '%cardio%'
   	-- clausula or 
    --and medespecialidade ilike '%cardio%' 
-   --or medespecialidade ilike '%derma%'
+  -- or medespecialidade ilike '%derma%'
     --clausula not in - nao vai listar 1 e 3 
-  --and medcodigo not in (1,3)
+  -- and medcodigo not in (1,3)
   --clausula in-vai listar apenas 1 e 3 
-  -- and medcodigo in (1,3)
+  --and medcodigo in (1,3)
   
  -- EXEMPLO COUNT
  -- Contar quantos medicos
@@ -72,7 +72,8 @@ select tbmedico.medcodigo as codigo,
 update tbconsulta set valor = 250 
 
 -- soma do valor de todas as consultas 
- select sum(valor) as totalsoma from tbconsulta
+ select sum(valor) as totalsoma 
+ from tbconsulta
  
 -- avg e a media  
 select avg(valor) as media from tbconsulta 
@@ -91,6 +92,9 @@ select max(medcodigo) as maior from tbmedico
 	from tbmedico
 group by mednome
 
+select * from tbmedico 
+
+
 
 -- agrupa as especialidades de medicos 
   select count(*) as total, 
@@ -105,7 +109,7 @@ group by medespecialidade
 	from tbmedico
 group by medespecialidade
 order by total desc, 
-	     medespecialidade desc  
+	     medespecialidade asc
 
   select * 
 	from tbmedico 
@@ -115,18 +119,22 @@ order by medespecialidade,
  -- LIMIT 
    select * 
      from tbmedico 
- order by medcodigo asc 
-    limit 5
+ order by medcodigo desc 
+    limit 2
  
+select * from tbconsulta 
+
+
 -- inner join 
--- quantas consultas tem um medico x(nome do medico)? 
+-- quantas consultas 
+-- tem um medico x(nome do medico)? 
 select count(*) as totalconsulta,
 	   tbmedico.medcodigo,
 	   tbmedico.mednome
   from tbconsulta
   -- junta as chaves primarias 
 inner join tbmedico 
-	 on(tbmedico.medcodigo = tbconsulta.medcodigo)  
+	 on(tbmedico.medcodigo = tbconsulta.medcodigo)
 group by tbmedico.medcodigo,
 	     tbmedico.mednome
 order by totalconsulta 	   
@@ -166,7 +174,7 @@ PRIMARY KEY (medcodigo, paccodigo,dataconsulta);
 
 -- LISTAR TODOS OS PACIENTES 
 -- QUE NAO TIVERAM NENHUMA 
--- CONSULTA
+-- CONSULTA...
    select tbpaciente.* 
      from tbpaciente 
 right join tbconsulta -- traz somente da tbconsulta
@@ -175,9 +183,8 @@ right join tbconsulta -- traz somente da tbconsulta
    select tbpaciente.* 
      from tbpaciente 
 left join tbconsulta -- traz todos
-	   on (tbpaciente.paccodigo = tbconsulta.paccodigo)
-       
-	   where tbconsulta.paccodigo is null    
+	   on (tbpaciente.paccodigo = tbconsulta.paccodigo)       
+	where tbconsulta.paccodigo is null    
 
 --HAVING - USADO EM CLAUSULAS AGRUPADORAS
     select count(*) as totalconsulta,
