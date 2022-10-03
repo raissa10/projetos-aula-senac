@@ -1,0 +1,21 @@
+CREATE DATABASE avaliacaofinal
+  WITH OWNER = postgres
+       ENCODING = 'WIN1252'
+       TABLESPACE = pg_default
+       LC_COLLATE = 'Portuguese_Brazil.1252'
+       LC_CTYPE = 'Portuguese_Brazil.1252'
+       CONNECTION LIMIT = -1;
+
+CREATE SCHEMA cadastro
+  AUTHORIZATION postgres;
+
+CREATE TABLE cadastro.tbpessoa(
+  pescodigo integer NOT NULL,
+  pesnome character varying(200),
+  pesdatanascimento date,
+  pesbairro character varying(100),
+  pescidade character varying(100),
+  pesicms integer NOT NULL,
+  pesestado character varying(2),
+  CONSTRAINT pk_tbpessoa PRIMARY KEY (pescodigo)
+)

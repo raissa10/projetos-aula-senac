@@ -1,0 +1,5 @@
+botao de codigo e ver se ja existe
+
+botao excluir-fazer um botao para verificar se existe relacao na base de dados.
+
+

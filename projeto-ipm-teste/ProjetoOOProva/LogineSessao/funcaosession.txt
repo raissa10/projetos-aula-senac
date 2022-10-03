@@ -1,0 +1,15 @@
+
+    function sessaoLogin() {
+        session_start();
+        $oUsuario = new Usuario();
+        if (isset($_SESSION['usuario'])) {
+            $oUsuario = unserialize($_SESSION['usuario']);
+            $oUsuario->imprime();
+        } else {
+            echo 'Voce nunca passou por aqui! ';
+            $oUsuario = new Usuario();
+            $oUsuario->setCodigo(1);
+            $oUsuario->setNome('Geo');
+            $_SESSION['usuario'] = serialize($oUsuario);
+        }
+    }

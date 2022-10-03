@@ -1,0 +1,26 @@
+CREATE DATABASE cinema;
+CREATE SCHEMA cinema;
+
+create table cinema.tbcategoria(
+	catcodigo integer NOT NULL,
+	catnome character varying(200),
+	CONSTRAINT pk_tbcategoria PRIMARY KEY(catcodigo)
+
+);
+
+create table cinema.tbator()
+	atocodigo integer NOT NULL,
+	atonome character varying(200),
+	CONSTRAINT pk_tbator PRIMARY KEY(atocodigo)
+
+);
+
+create table cinema.tbfilme()
+	filcodigo integer NOT NULL,
+	filtitulo character varying(200),
+	filsinopse 
+	
+	
+	CONSTRAINT pk_tbator PRIMARY KEY(atocodigo)
+
+);

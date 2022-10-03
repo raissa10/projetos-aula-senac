@@ -1,0 +1,6 @@
+pasta Core nao devera ser mexido
+
+controllerAtor extends ControllerPadrao
+modelAtor extends ModelPadrao
+persistenciaAtor extends PersistenciaPadrao
+viewAtor extends ViewPadrao
