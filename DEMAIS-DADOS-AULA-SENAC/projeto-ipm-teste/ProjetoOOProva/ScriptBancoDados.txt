@@ -1,0 +1,41 @@
+CREATE DATABASE cinema;
+CREATE SCHEMA cinema;
+
+create table cinema.tbcategoria(
+	catcodigo integer NOT NULL,
+	catnome character varying(200),
+	CONSTRAINT pk_tbcategoria PRIMARY KEY(catcodigo)
+
+);
+create table cinema.tbator(
+	atocodigo integer NOT NULL,
+	atonome character varying(200),
+	CONSTRAINT pk_tbator PRIMARY KEY(atocodigo)
+);
+
+create table cinema.tbfilme(
+	filcodigo integer NOT NULL,
+	filtitulo character varying(200),
+	filsinopse text,
+	filtrailer character varying(300),
+	fildataestreia date,
+	catcodigo integer not null,
+	CONSTRAINT pk_tbfilme PRIMARY KEY(filcodigo),
+	CONSTRAINT fk_tbfilme_tbcategoria FOREIGN KEY(catcodigo)
+	REFERENCES cinema.tbcategoria(catcodigo)
+);
+
+
+create table cinema.tbatorfilme(
+	filcodigo integer not null,
+	atocodigo integer not null,
+	atfpapel character varying(200),
+	CONSTRAINT pk_tbatorfilme PRIMARY KEY(filcodigo,atocodigo)
+);
+
+//Tabela de usuarios
+create table cinema.tbusuario(
+	usucodigo integer not null,
+	usunome character varying(200),
+	CONSTRAINT pk_tbusuario PRIMARY KEY(usucodigo)
+);
