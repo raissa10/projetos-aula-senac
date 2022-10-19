@@ -1,3 +1,0 @@
-campo de icms caso seja selecionado algum
-dos estados é carregado o campo de ICMS.
-por default o valor 0
