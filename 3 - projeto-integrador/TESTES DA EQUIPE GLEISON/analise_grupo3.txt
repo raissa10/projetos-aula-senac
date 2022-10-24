@@ -1,0 +1,76 @@
+Local dos projetos para testes: SENAC
+ACESSAR TEAMS E IR EM >> 006 - PROJETO INTEGRADOR - PROJETOS INTEGRADOR-EQUIPES
+
+0 - Cada Equipe deve ter uma pessoa para tirar duvidas dos outros sobre seu sistema
+
+1 - Cada equipe deve testar todos os outros sistemas e anotar num arquivo de texto
+
+2 - Abrir e testar as telas dos sistemas que nao for o da sua equipe
+
+3 - Escrever caminho de acesso e tela que tenham possiveis erros na sua visao
+
+4 - sugerir possiveis melhorias
+
+5 - Ao final da aula, enviar o arquivo de texto pelo teams para o professor 
+com o nome do arquivo assim:ANALISE_EQUIPE_01.txt - para a equipe 01
+
+Layout de cada analise: 
+#Sistema 001
+Nome Sistema testado: sistema de pizzaria grupo 1 
+
+No meu ponto de vista da ERP de pizzaria atribui oque precisava em relação ao cliente e o administrador, 
+no principal do sistema o usuário pode escolher algumas das opções que deseja gerenciar e as telas estão bem 
+relacionadas com o cliente, por esse motivo não tenho nada acrescentar de melhoria do projeto. 
+
+Foram encontradas falhas ou não?
+Nome da Tela
+Caminho de acesso a tela
+Erro: não teve erro 
+
+Tem alguma sugestão de mudança?
+Nome da Tela
+Caminho de acesso a tela
+Sugestão: não tenho nada acrecentar de melhoria 
+
+
+#Sistema 002
+Nome Sistema testado: Busca job`s Grupo 2: 
+
+Relação ao grupo 2 o projeto busca job`s está bem organizado e fácil de entender pelas telas, atribuindo muito na compreensão do sistema e na ideia principal do projeto. 
+
+Foram encontradas falhas ou não?
+Nome da Tela
+Caminho de acesso a tela
+Erro: o único problema que encontramos e que ao criar um login, você pode logar nas duas telas com o mesmo login
+
+Tem alguma sugestão de mudança?
+Nome da Tela
+Caminho de acesso a tela
+Sugestão: nada acrescentar
+
+#Sistema 003
+Nome Sistema testado:
+
+Foram encontradas falhas ou não?
+Nome da Tela
+Caminho de acesso a tela
+Erro: problema só na hora de cadastrar novo usuário a tela não abri tudo 
+
+Tem alguma sugestão de mudança?
+Nome da Tela
+Caminho de acesso a tela
+Sugestão: no meu ponto de vista não precisa de mudanças 
+
+#Sistema 004
+Nome Sistema testado: Sistema escolar 
+
+Foram encontradas falhas ou não?
+Nome da Tela
+Caminho de acesso a tela
+Erro: não foi encontrado problemas 
+
+Tem alguma sugestão de mudança?
+Nome da Tela
+Caminho de acesso a tela
+Sugestão: no meu ponto de vista não precisa de mudanças 
+

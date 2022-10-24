@@ -1,0 +1,47 @@
+Local dos projetos para testes:
+ACESSAR TEAMS E IR EM >> 006 - PROJETO INTEGRADOR - PROJETOS INTEGRADOR-EQUIPES
+
+0 - Cada Equipe deve ter uma pessoa para tirar duvidas dos outros sobre seu sistema
+
+1 - Cada equipe deve testar todos os outros sistemas e anotar num arquivo de texto
+
+2 - Abrir e testar as telas dos sistemas que nao for o da sua equipe
+
+3 - Escrever caminho de acesso e tela que tenham possiveis erros na sua visao
+
+4 - sugerir possiveis melhorias
+
+5 - Ao final da aula, enviar o arquivo de texto pelo teams para o professor 
+com o nome do arquivo assim:ANALISE_EQUIPE_01.txt - para a equipe 01
+
+Layout de cada analise:
+#Sistema 005
+Nome Sistema testado:Sistema de Gestão Escolar
+
+Foram encontradas falhas ou não?
+R: Encontrei uma inconsistencia para logar com um usuário criado
+além de haver conflito JNI no meu dispositivo!
+
+Tem alguma sugestão de mudança?
+As Telas de busca/consulta de informações e cadastros poderiam ser mais automatizadas
+ou seja, já poderia iniciar efetuando um novo registro e na consulta já carregar os dados
+nas tabelas em cada tipo de consulta respectivamente.
+
+
+Layout de cada analise:
+#Sistema 002
+Nome Sistema testado: Busca Jobs!
+Foram encontradas falhas ou não?
+Sim, As colunas da tabela eu consigo movimentar, 
+mas elas não atualizam quando eu saio e volto. 
+Quando entro pra consultar as empresas e volto pra alterar 
+o meu cadastro ele perde o login, aí aparece que o meu cadastro não existe.
+
+Layout de cada analise:
+#Sistema 004
+Nome Sistema testado: Gerenciador de Tarefas
+
+Foram encontradas falhas ou não?
+R: Foi encontrado uma inversão
+
+Tem alguma sugestão de mudança?
